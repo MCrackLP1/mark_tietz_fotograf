@@ -9,29 +9,15 @@
     "build": "npm run build:css && npm run copy:files",
     "copy:files": "node -e \"const fs=require('fs'); const path=require('path'); if(!fs.existsSync('public')){fs.mkdirSync('public',{recursive:true})}; const copyDir=(src,dest)=>{if(!fs.existsSync(dest)){fs.mkdirSync(dest,{recursive:true})}; fs.readdirSync(src).forEach(item=>{const srcPath=path.join(src,item); const destPath=path.join(dest,item); if(fs.statSync(srcPath).isDirectory()){copyDir(srcPath,destPath)}else{fs.copyFileSync(srcPath,destPath)}})}; ['*.html','assets','css','js','dist','robots.txt','sitemap.xml','.htaccess'].forEach(pattern=>{if(pattern.includes('*')){fs.readdirSync('.').filter(f=>f.endsWith('.html')).forEach(f=>fs.copyFileSync(f,path.join('public',f)))}else if(fs.existsSync(pattern)){if(fs.statSync(pattern).isDirectory()){copyDir(pattern,path.join('public',pattern))}else{fs.copyFileSync(pattern,path.join('public',pattern))}}})\"",
     "dev": "python -m http.server 8000",
-    "optimize:html": "node -e \"console.log('HTML optimization placeholder - implement minification if needed')\"",
-    "validate": "node -e \"console.log('Validation placeholder - implement HTML/CSS validation if needed')\"",
-    "start": "npm run dev",
-    "clean": "rm -rf dist && mkdir dist"
+    "optimize:html": "node -e \"console.log('HTML optimization placeholder - implement minification if needed')\""
   },
-  "keywords": [
-    "photography",
-    "portfolio",
-    "website",
-    "fotograf",
-    "allgäu"
-  ],
+  "keywords": ["fotografie", "photography", "allgau", "kempten", "hochzeit", "business"],
   "author": "Mark Tietz",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.39",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
-    "cssnano": "^7.0.4",
-    "tailwindcss": "^3.4.4",
-    "imagemin": "^8.0.1",
-    "imagemin-cli": "^8.0.0",
-    "imagemin-webp": "^8.0.0",
-    "live-server": "^1.2.2"
+    "tailwindcss": "^3.4.17"
   }
 }
