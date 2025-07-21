@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.mark-tietz.photos/sitemap.xml
+
+# Disallow sensitive areas
+Disallow: /js/
+Disallow: /node_modules/
+Disallow: /*.json$
+
+# Allow important directories
+Allow: /assets/
+Allow: /css/
+Allow: *.css
+Allow: *.js
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.webp
+Allow: *.svg 
