@@ -810,90 +810,98 @@ img {
   transform: translateY(-2px);
 }
 
+/* Portfolio Grid Einheitliche Darstellung */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-8);
-  margin-bottom: var(--spacing-16);
-}
-
-@media (min-width: 768px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .portfolio-item {
   position: relative;
-  border-radius: var(--radius-xl);
+  aspect-ratio: 4/5; /* Einheitliches Seitenverhältnis */
+  border-radius: 12px;
   overflow: hidden;
-  aspect-ratio: 4/5;
-  group: hover;
-  cursor: pointer;
+  background: var(--card-background);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .portfolio-image {
   width: 100%;
   height: 100%;
+  position: relative;
   overflow: hidden;
 }
 
 .portfolio-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-slower);
+  object-fit: cover; /* Sorgt für einheitliche Größe bei verschiedenen Formaten */
+  object-position: center; /* Zentriert das Bild */
+  transition: transform 0.3s ease;
 }
 
 .portfolio-item:hover .portfolio-image img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .portfolio-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.6) 50%,
-    transparent 100%
+    45deg, 
+    rgba(0, 0, 0, 0.7) 0%, 
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.8) 100%
   );
-  color: var(--color-text-inverse);
-  padding: var(--spacing-6);
-  transform: translateY(100%);
-  transition: transform var(--transition-base);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
 }
 
 .portfolio-item:hover .portfolio-overlay {
-  transform: translateY(0);
+  opacity: 1;
+}
+
+.portfolio-content {
+  color: white;
+  width: 100%;
 }
 
 .portfolio-category {
-  font-size: var(--font-size-sm);
-  color: var(--color-accent-light);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: var(--spacing-2);
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 
 .portfolio-content h3 {
-  font-size: var(--font-size-xl);
-  color: var(--color-text-inverse);
-  margin-bottom: var(--spacing-2);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: white;
 }
 
 .portfolio-content p {
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: var(--spacing-4);
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 0.75rem;
 }
 
 .portfolio-link {
@@ -903,14 +911,50 @@ img {
   width: 40px;
   height: 40px;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-full);
-  transition: var(--transition-fast);
+  border-radius: 50%;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   backdrop-filter: blur(10px);
 }
 
 .portfolio-link:hover {
-  background: var(--color-accent);
+  background: rgba(255, 255, 255, 0.3);
   transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .portfolio-item {
+    aspect-ratio: 3/4; /* Auf mobilen Geräten leicht anders */
+  }
+  
+  .portfolio-overlay {
+    padding: 1rem;
+  }
+  
+  .portfolio-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .portfolio-content p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .portfolio-item {
+    aspect-ratio: 4/5;
+  }
 }
 
 .portfolio-cta {
