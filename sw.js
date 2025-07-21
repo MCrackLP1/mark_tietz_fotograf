@@ -9,7 +9,8 @@ const urlsToCache = [
   '/js/enhanced-interactions.js',
   '/css/visibility-improvements.css',
   '/css/enhanced-animations.css',
-  '/assets/img/photographer-hero.webp',
+  '/css/image-quality-fix.css',
+  '/assets/img/portfolio/photographer-hero.webp',
   '/assets/img/author-mark.webp',
   '/assets/img/og-image.svg',
   '/assets/img/twitter-card.svg'

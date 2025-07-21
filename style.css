@@ -849,7 +849,7 @@ img {
 }
 
 .portfolio-item:hover .portfolio-image img {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .portfolio-overlay {
@@ -2738,12 +2738,12 @@ img {
 
 .map-container iframe {
   border-radius: var(--border-radius);
-  filter: grayscale(0.1) contrast(1.1);
+  filter: grayscale(0.1) contrast(1.05);
   transition: filter var(--transition-base);
 }
 
 .map-container:hover iframe {
-  filter: grayscale(0) contrast(1.2);
+  filter: grayscale(0) contrast(1.1);
 }
 
 /* Maps Consent Styles */

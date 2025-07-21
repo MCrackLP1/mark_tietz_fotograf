@@ -1,0 +1,65 @@
+/* Image Quality Improvements */
+/* Bessere Bildqualität für alle Bilder */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: auto;
+  /* Moderne Browser bevorzugen 'auto' für beste Qualität */
+  image-rendering: auto !important;
+  
+  /* Smooth scaling */
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0,0,0);
+  
+  /* Anti-aliasing für bessere Kanten */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Spezielle Behandlung für Portfolio-Bilder */
+.portfolio-item img,
+.hero-image,
+.about-portrait {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: auto !important;
+  
+  /* Reduziere übermäßige Skalierung */
+  max-width: 100%;
+  height: auto;
+  
+  /* Bessere Qualität beim Zoom/Hover */
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Verhindere Überfilterung bei Hover */
+.portfolio-item:hover img {
+  /* Entferne aggressive Filter */
+  filter: none;
+  /* Sanfte Skalierung */
+  transform: scale(1.01);
+}
+
+/* WebP spezifische Verbesserungen */
+img[src*=".webp"] {
+  /* WebP-Bilder haben manchmal Rendering-Probleme */
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Disable aggressive filtering on mobile */
+@media (max-width: 768px) {
+  .portfolio-item img,
+  .hero-image {
+    filter: none !important;
+    transform: none !important;
+  }
+  
+  .portfolio-item:hover img {
+    transform: scale(1.005) !important;
+    filter: none !important;
+  }
+} 

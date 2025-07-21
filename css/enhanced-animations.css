@@ -147,8 +147,8 @@
 }
 
 .portfolio-item:hover .portfolio-image img {
-  transform: scale(1.05);
-  filter: brightness(1.1) saturate(1.2);
+  transform: scale(1.02);
+  filter: brightness(1.02) saturate(1.05);
 }
 
 /* Enhanced button animations */
