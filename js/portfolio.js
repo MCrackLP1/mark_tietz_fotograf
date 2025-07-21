@@ -3,6 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const portfolioItems = document.querySelectorAll('.portfolio-grid .portfolio-item');
     const loadMoreBtn = document.getElementById('load-more');
 
+    // Initialize portfolio items visibility
+    if (portfolioItems.length > 0) {
+        portfolioItems.forEach(item => {
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+            item.style.display = 'block';
+        });
+    }
+
     // Enhanced filtering with loading states
     if (filterButtons.length > 0 && portfolioItems.length > 0) {
         filterButtons.forEach(button => {
