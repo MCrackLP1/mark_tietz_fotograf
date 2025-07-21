@@ -12,55 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Enhanced filtering with loading states
-    if (filterButtons.length > 0 && portfolioItems.length > 0) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Add loading state to button
-                button.disabled = true;
-                button.innerHTML = 'Laden...';
-                
-                // Deactivate all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Activate clicked button
-                button.classList.add('active');
-                
-                const filterValue = button.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    const itemCategory = item.getAttribute('data-category');
-                    
-                    // Add fade out effect
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.95)';
-
-                    setTimeout(() => {
-                        if (filterValue === 'all' || itemCategory === filterValue) {
-                            item.style.display = 'block';
-                            // Trigger reflow
-                            item.offsetHeight;
-                            // Fade in
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    }, 200);
-                });
-
-                // Reset button after animation
-                setTimeout(() => {
-                    button.disabled = false;
-                    button.innerHTML = button.getAttribute('data-original-text') || button.textContent;
-                }, 400);
-            });
-        });
-
-        // Store original button text
-        filterButtons.forEach(btn => {
-            btn.setAttribute('data-original-text', btn.textContent);
-        });
-    }
+    // No filtering - all portfolio items are always visible
 
     // Enhanced lightbox with preloading
     const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
