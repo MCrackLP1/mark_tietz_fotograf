@@ -1,0 +1,36 @@
+{
+  "name": "mark-tietz-fotograf-webseite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "postcss style.css -o dist/style.min.css --map",
+    "watch:css": "postcss style.css -o dist/style.min.css --map --watch",
+    "dev": "live-server --port=8080",
+    "build": "npm run build:css && npm run optimize:html",
+    "optimize:html": "node -e \"console.log('HTML optimization placeholder - implement minification if needed')\"",
+    "validate": "node -e \"console.log('Validation placeholder - implement HTML/CSS validation if needed')\"",
+    "start": "npm run dev",
+    "clean": "rm -rf dist && mkdir dist"
+  },
+  "keywords": [
+    "photography",
+    "portfolio",
+    "website",
+    "fotograf",
+    "allgäu"
+  ],
+  "author": "Mark Tietz",
+  "license": "ISC",
+  "description": "Professional photography website for Mark Tietz - Fotograf in Kempten & Allgäu",
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "postcss-cli": "^11.0.0",
+    "cssnano": "^7.0.4",
+    "tailwindcss": "^3.4.4",
+    "imagemin": "^8.0.1",
+    "imagemin-cli": "^8.0.0",
+    "imagemin-webp": "^8.0.0",
+    "live-server": "^1.2.2"
+  }
+}

@@ -1,0 +1,476 @@
+/* Enhanced Animations for Mark Tietz Photography Website */
+/* Performance-optimized animations using transform and opacity */
+
+/* ===========================================
+   GENERAL ANIMATION UTILITIES
+   =========================================== */
+
+:root {
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animation-duration-fast: 0.3s;
+  --animation-duration-normal: 0.6s;
+  --animation-duration-slow: 1.2s;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===========================================
+   SMOOTH SCROLL REVEAL ANIMATIONS
+   =========================================== */
+
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--animation-duration-normal) var(--ease-out-expo);
+}
+
+.animate-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all var(--animation-duration-normal) var(--ease-out-expo);
+}
+
+.animate-slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all var(--animation-duration-normal) var(--ease-out-expo);
+}
+
+.animate-slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all var(--animation-duration-normal) var(--ease-out-back);
+}
+
+.animate-scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered animations for child elements */
+.stagger-children > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { transition-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { transition-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { transition-delay: 0.6s; }
+
+/* ===========================================
+   ENHANCED HOVER EFFECTS
+   =========================================== */
+
+/* Interactive service cards */
+.service-card {
+  transition: all var(--animation-duration-fast) var(--ease-out-quart);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(49, 130, 206, 0.1), transparent);
+  transition: left var(--animation-duration-slow) var(--ease-out-expo);
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(-5deg);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Enhanced portfolio item hover */
+.portfolio-item {
+  transition: all var(--animation-duration-fast) var(--ease-out-quart);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.portfolio-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(49, 130, 206, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--animation-duration-fast) var(--ease-out-quart);
+  pointer-events: none;
+}
+
+.portfolio-item:hover::after {
+  opacity: 1;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item:hover .portfolio-image img {
+  transform: scale(1.05);
+  filter: brightness(1.1) saturate(1.2);
+}
+
+/* Enhanced button animations */
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--animation-duration-fast) var(--ease-out-quart);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: all var(--animation-duration-normal) var(--ease-out-expo);
+  transform: translate(-50%, -50%);
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ===========================================
+   LOADING STATES & MICRO-INTERACTIONS
+   =========================================== */
+
+/* Enhanced loading spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(49, 130, 206, 0.2);
+  border-top: 3px solid var(--color-accent);
+  border-radius: 50%;
+  animation: spin-enhanced 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes spin-enhanced {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Skeleton loading for images */
+.image-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===========================================
+   BACKGROUND ANIMATIONS
+   =========================================== */
+
+/* Subtle background patterns */
+.animated-bg-pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-bg-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(49, 130, 206, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+  animation: pattern-drift 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pattern-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(2%, 1%) rotate(1deg) scale(1.02); }
+  66% { transform: translate(-1%, 2%) rotate(-0.5deg) scale(0.98); }
+}
+
+/* Floating elements */
+.floating-element {
+  animation: gentle-float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(odd) {
+  animation-delay: -3s;
+  animation-direction: reverse;
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+/* ===========================================
+   CURSOR INTERACTIONS - DISABLED
+   =========================================== */
+
+/* Custom cursor disabled per user request */
+
+/* ===========================================
+   ENHANCED FORM ANIMATIONS
+   =========================================== */
+
+.form-group {
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  transition: all var(--animation-duration-fast) var(--ease-out-quart);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(49, 130, 206, 0.2);
+}
+
+/* Animated label */
+.form-group label {
+  transition: all var(--animation-duration-fast) var(--ease-out-quart);
+}
+
+.form-group:focus-within label {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Form validation animations */
+.form-error {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: error-shake 0.5s ease-out forwards;
+}
+
+@keyframes error-shake {
+  0% { opacity: 0; transform: translateX(-10px); }
+  25% { opacity: 1; transform: translateX(10px); }
+  50% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.form-success {
+  animation: success-bounce 0.6s var(--ease-out-back);
+}
+
+@keyframes success-bounce {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 1; transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ===========================================
+   NAVIGATION ENHANCEMENTS
+   =========================================== */
+
+.nav-menu a {
+  position: relative;
+  transition: all var(--animation-duration-fast) var(--ease-out-quart);
+}
+
+.nav-menu a::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: all var(--animation-duration-fast) var(--ease-out-expo);
+  transform: translateX(-50%);
+}
+
+.nav-menu a:hover::before,
+.nav-menu a.active::before {
+  width: 100%;
+}
+
+.nav-menu a:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile menu animation */
+.mobile-menu {
+  transition: all var(--animation-duration-normal) var(--ease-out-expo);
+}
+
+.mobile-menu.active {
+  animation: slide-in-right 0.4s var(--ease-out-expo) forwards;
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* ===========================================
+   TESTIMONIAL ENHANCEMENTS
+   =========================================== */
+
+.testimonial-card {
+  transition: all var(--animation-duration-normal) var(--ease-out-quart);
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, transparent, var(--color-accent), transparent);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--animation-duration-fast);
+  z-index: -1;
+}
+
+.testimonial-card:hover::before {
+  opacity: 1;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* ===========================================
+   FOOTER ANIMATIONS
+   =========================================== */
+
+.footer-social a {
+  transition: all var(--animation-duration-fast) var(--ease-out-quart);
+}
+
+.footer-social a:hover {
+  transform: translateY(-3px) rotate(360deg) scale(1.2);
+  background: var(--color-accent);
+}
+
+.footer-links a {
+  transition: all var(--animation-duration-fast) var(--ease-out-quart);
+  position: relative;
+}
+
+.footer-links a::after {
+  content: '→';
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all var(--animation-duration-fast) var(--ease-out-quart);
+}
+
+.footer-links a:hover::after {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* ===========================================
+   RESPONSIVE ANIMATIONS
+   =========================================== */
+
+@media (max-width: 768px) {
+  .animate-fade-up,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-scale-in {
+    transform: none;
+    opacity: 1;
+  }
+  
+  .service-card:hover,
+  .portfolio-item:hover {
+    transform: none;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY ENHANCEMENTS
+   =========================================== */
+
+/* Focus indicators */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  animation: focus-pulse 0.3s ease;
+}
+
+@keyframes focus-pulse {
+  0% { outline-width: 2px; }
+  50% { outline-width: 4px; }
+  100% { outline-width: 2px; }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn::before,
+  .service-card::before,
+  .portfolio-item::after {
+    display: none;
+  }
+} 
