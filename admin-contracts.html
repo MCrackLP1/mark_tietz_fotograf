@@ -16,12 +16,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* CSS Variables für bessere Lesbarkeit */
+        :root {
+            --color-primary: #1a202c;
+            --color-secondary: #4a5568;
+            --color-accent: #3182ce;
+            --color-accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --color-text-primary: #1a202c;
+            --color-text-secondary: #4a5568;
+            --color-border: #e2e8f0;
+            --color-background: #ffffff;
+            --color-success: #38a169;
+            --color-error: #e53e3e;
+        }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            color: var(--color-text-primary);
         }
 
         .container {
@@ -183,6 +198,31 @@
 
             .contracts-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-primary: #ffffff;
+                --color-text-primary: #ffffff;
+                --color-text-secondary: #cbd5e0;
+                --color-border: #4a5568;
+                --color-background: #2d3748;
+            }
+
+            body {
+                background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+                color: var(--color-text-primary);
+            }
+
+            .header, .contract-card, .footer-info {
+                background: #2d3748;
+                color: var(--color-text-primary);
+            }
+
+            .contract-card:hover {
+                background: #4a5568;
             }
         }
     </style>

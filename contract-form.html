@@ -20,12 +20,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
+        /* CSS Variables für bessere Lesbarkeit */
+        :root {
+            --color-primary: #1a202c;
+            --color-primary-light: #2d3748;
+            --color-secondary: #4a5568;
+            --color-accent: #3182ce;
+            --color-accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --color-text-primary: #1a202c;
+            --color-text-secondary: #4a5568;
+            --color-border: #e2e8f0;
+            --color-background: #ffffff;
+            --color-success: #38a169;
+            --color-error: #e53e3e;
+        }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            color: var(--color-text-primary);
         }
 
         .container {
@@ -293,6 +309,38 @@
             }
         }
 
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-primary: #ffffff;
+                --color-text-primary: #ffffff;
+                --color-text-secondary: #cbd5e0;
+                --color-border: #4a5568;
+                --color-background: #2d3748;
+            }
+
+            body {
+                background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+                color: var(--color-text-primary);
+            }
+
+            .form-container, .header {
+                background: #2d3748;
+                color: var(--color-text-primary);
+            }
+
+            input, select, textarea {
+                background: #4a5568;
+                color: var(--color-text-primary);
+                border-color: var(--color-border);
+            }
+
+            .contract-preview {
+                background: #4a5568;
+                color: var(--color-text-secondary);
+            }
+        }
+
         /* PDF styles - hidden from screen */
         .pdf-content {
             display: none;
@@ -319,14 +367,18 @@
         .pdf-logo {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
+            overflow: hidden;
+            background: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
+        }
+
+        .pdf-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .pdf-company-info {
@@ -956,7 +1008,9 @@
             const pdfContent = `
                 <div class="pdf-header">
                     <div>
-                        <div class="pdf-logo">MT</div>
+                        <div class="pdf-logo">
+                            <img src="assets/img/favicon/android-chrome-192x192.png" alt="Mark Tietz Fotografie Logo" />
+                        </div>
                     </div>
                     <div class="pdf-company-info">
                         <strong>Mark Tietz</strong><br>
@@ -964,7 +1018,7 @@
                         87448 Waltenhofen<br><br>
                         Tel: 01741632129<br>
                         E-Mail: mark.briehn@web.de<br>
-                        Web: mark-tietz.de<br><br>
+                        Web: mark-tietz.photos<br><br>
                         Steuernr: 127/280/90241<br>
                         Inhaber: Mark Tietz
                     </div>
@@ -1128,7 +1182,7 @@
         function copyPDFLink() {
             // In a real implementation, you would upload the PDF to a server and get a shareable link
             // For now, we'll just show a placeholder
-            const link = `https://mark-tietz.de/contracts/view/${Date.now()}`;
+            const link = `https://mark-tietz.photos/contracts/view/${Date.now()}`;
             navigator.clipboard.writeText(link).then(() => {
                 alert('Link wurde in die Zwischenablage kopiert!\n\nHinweis: Dies ist ein Beispiel-Link. In der finalen Version würde hier ein echter Download-Link generiert.');
             });

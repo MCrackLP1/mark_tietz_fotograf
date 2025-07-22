@@ -16,6 +16,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* CSS Variables für bessere Lesbarkeit */
+        :root {
+            --color-primary: #1a202c;
+            --color-secondary: #4a5568;
+            --color-accent: #3182ce;
+            --color-accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --color-text-primary: #1a202c;
+            --color-text-secondary: #4a5568;
+            --color-border: #e2e8f0;
+            --color-background: #ffffff;
+        }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -25,6 +37,7 @@
             justify-content: center;
             margin: 0;
             padding: 20px;
+            color: var(--color-text-primary);
         }
 
         .login-container {
@@ -136,6 +149,34 @@
 
         .back-to-site a:hover {
             color: var(--color-accent);
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-primary: #ffffff;
+                --color-text-primary: #ffffff;
+                --color-text-secondary: #cbd5e0;
+                --color-border: #4a5568;
+                --color-background: #2d3748;
+            }
+
+            .login-container {
+                background: #2d3748;
+                color: var(--color-text-primary);
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                background: #4a5568;
+                color: var(--color-text-primary);
+                border-color: var(--color-border);
+            }
+
+            .error-message {
+                background: #742a2a;
+                color: #feb2b2;
+            }
         }
     </style>
 </head>
