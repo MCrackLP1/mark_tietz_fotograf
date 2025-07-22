@@ -8,6 +8,9 @@ Sitemap: https://www.mark-tietz.photos/sitemap.xml
 Disallow: /js/
 Disallow: /node_modules/
 Disallow: /*.json$
+Disallow: /admin-login.html
+Disallow: /admin-contracts.html
+Disallow: /contract-form.html
 
 # Allow important directories
 Allow: /assets/

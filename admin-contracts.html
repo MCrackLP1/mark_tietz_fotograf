@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertragsbereich - Mark Tietz Fotografie</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header-text p {
+            margin: 0.25rem 0 0 0;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .logout-btn {
+            background: var(--color-error);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            opacity: 0.9;
+        }
+
+        .contracts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contract-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .contract-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-accent);
+        }
+
+        .contract-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contract-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .contract-card p {
+            margin: 0 0 1rem 0;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .contract-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contract-features li {
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .contract-features li:before {
+            content: "✓";
+            color: var(--color-success);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .footer-info {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-info p {
+            margin: 0;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .contracts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo">MT</div>
+                <div class="header-text">
+                    <h1>Vertragsbereich</h1>
+                    <p>Mark Tietz Fotografie - Vertragserstellung</p>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="logout()">Abmelden</button>
+        </div>
+
+        <div class="contracts-grid">
+            <div class="contract-card" onclick="openContract('tfp')">
+                <div class="contract-icon">📸</div>
+                <h3>TFP Vertrag</h3>
+                <p>Time for Print - Kostenloser Austausch zwischen Model und Fotograf</p>
+                <ul class="contract-features">
+                    <li>Nutzungsrechte für beide Seiten</li>
+                    <li>Bildauswahl und Bearbeitung</li>
+                    <li>Verwendungszweck definieren</li>
+                    <li>Zeitrahmen festlegen</li>
+                </ul>
+            </div>
+
+            <div class="contract-card" onclick="openContract('wedding')">
+                <div class="contract-icon">💒</div>
+                <h3>Hochzeitsvertrag</h3>
+                <p>Professionelle Hochzeitsfotografie mit detaillierter Leistungsabsprache</p>
+                <ul class="contract-features">
+                    <li>Zeitraum und Leistungen</li>
+                    <li>Preisgestaltung</li>
+                    <li>Bildlieferung und -rechte</li>
+                    <li>Stornierungsbedingungen</li>
+                </ul>
+            </div>
+
+            <div class="contract-card" onclick="openContract('business')">
+                <div class="contract-icon">💼</div>
+                <h3>Business Shooting</h3>
+                <p>Gewerbliche Fotografie für Unternehmen und Selbständige</p>
+                <ul class="contract-features">
+                    <li>Corporate Design Integration</li>
+                    <li>Nutzungsrechte kommerziell</li>
+                    <li>Auftragsumfang definieren</li>
+                    <li>Nachbearbeitung inkludiert</li>
+                </ul>
+            </div>
+
+            <div class="contract-card" onclick="openContract('portrait')">
+                <div class="contract-icon">👤</div>
+                <h3>Portrait Shooting</h3>
+                <p>Einzelperson oder Gruppenshooting für private Zwecke</p>
+                <ul class="contract-features">
+                    <li>Studio oder Outdoor</li>
+                    <li>Bildauswahl gemeinsam</li>
+                    <li>Private Nutzungsrechte</li>
+                    <li>Flexible Termingestaltung</li>
+                </ul>
+            </div>
+
+            <div class="contract-card" onclick="openContract('event')">
+                <div class="contract-icon">🎉</div>
+                <h3>Event Fotografie</h3>
+                <p>Veranstaltungen, Feiern und besondere Anlässe dokumentieren</p>
+                <ul class="contract-features">
+                    <li>Vollständige Eventabdeckung</li>
+                    <li>Diskrete Arbeitsweise</li>
+                    <li>Schnelle Bildlieferung</li>
+                    <li>Flexible Pakete</li>
+                </ul>
+            </div>
+
+            <div class="contract-card" onclick="openContract('family')">
+                <div class="contract-icon">👨‍👩‍👧‍👦</div>
+                <h3>Familien Shooting</h3>
+                <p>Familienportraits und Kinderfotos in entspannter Atmosphäre</p>
+                <ul class="contract-features">
+                    <li>Kinderfreundliche Arbeitsweise</li>
+                    <li>Natürliche Familienmomente</li>
+                    <li>Verschiedene Locations</li>
+                    <li>Persönliche Beratung</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <p>Alle Verträge werden automatisch mit Ihren Geschäftsdaten und dem aktuellen Datum erstellt. Nach dem Ausfüllen erhalten Sie eine PDF-Datei zum Download oder Teilen.</p>
+        </div>
+    </div>
+
+    <script>
+        // Prüfung ob eingeloggt
+        if (sessionStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            window.location.href = 'admin-login.html';
+        }
+
+        function openContract(type) {
+            // Zur entsprechenden Vertragsformular-Seite weiterleiten
+            window.location.href = `contract-form.html?type=${type}`;
+        }
+    </script>
+</body>
+</html> 
