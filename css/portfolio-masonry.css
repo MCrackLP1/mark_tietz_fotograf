@@ -1,34 +1,29 @@
 /* Portfolio Masonry Layout - Verbesserte Bilddarstellung */
 
-/* CSS Grid Masonry Layout */
+/* CSS Grid Masonry Layout - PROFESSIONELL */
 .portfolio-grid {
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
-  grid-auto-rows: 20px !important; /* Größere Zeilenhöhe für bessere Abstände */
-  gap: 20px !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  grid-auto-rows: 15px !important; /* Optimiert für professionelle Abstände */
+  gap: 15px !important; /* Reduzierte, einheitliche Abstände */
   margin-top: 2rem;
   align-items: start !important;
 }
 
-/* Portfolio Items ohne feste Seitenverhältnisse */
+/* Portfolio Items - CLEAN & STATIC */
 .portfolio-item {
   position: relative;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   background: var(--card-background, #ffffff);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  /* KEINE Shadows, Transitions, Cursor */
   
   /* Entferne das feste aspect-ratio - WICHTIG! */
   aspect-ratio: unset !important;
   height: auto !important;
 }
 
-.portfolio-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
+/* KEIN HOVER EFFEKT MEHR */
 
 /* Portfolio Image Container */
 .portfolio-image {
@@ -45,14 +40,12 @@
   height: auto !important; /* Wichtig: Natürliche Höhe! */
   object-fit: contain !important; /* Zeigt das komplette Bild ohne Zuschnitt */
   object-position: center !important;
-  transition: transform 0.3s ease;
+  /* KEINE Transitions oder Transforms */
   display: block;
   max-height: none !important;
 }
 
-.portfolio-item:hover .portfolio-image img {
-  transform: scale(1.02);
-}
+/* KEIN HOVER EFFEKT FÜR BILDER */
 
 /* Verschiedene Größenklassen für interessante Layouts */
 .portfolio-item.size-small {
@@ -71,93 +64,30 @@
   grid-row-end: span 50;
 }
 
-/* Automatische Größenerkennung basierend auf Bildformat */
+/* PROFESSIONELLE Grid-Spans - reduziert für kompaktes Layout */
 .portfolio-item.portrait {
-  grid-row-end: span 25 !important; /* Reduziert für Hochformat */
+  grid-row-end: span 20 !important; /* Hochformat kompakter */
 }
 
 .portfolio-item.landscape {
-  grid-row-end: span 15 !important; /* Reduziert für Querformat */
+  grid-row-end: span 12 !important; /* Querformat noch kompakter */
 }
 
 .portfolio-item.square {
-  grid-row-end: span 20 !important; /* Reduziert für quadratische Bilder */
+  grid-row-end: span 16 !important; /* Quadratisch ausgewogen */
 }
 
-/* Fallback für alle Items ohne spezifische Klasse */
+/* Fallback für alle Items */
 .portfolio-item:not(.portrait):not(.landscape):not(.square) {
-  grid-row-end: span 20 !important;
+  grid-row-end: span 16 !important;
 }
 
-/* Portfolio Overlay */
-.portfolio-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    45deg, 
-    rgba(0, 0, 0, 0.7) 0%, 
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  display: flex;
-  align-items: flex-end;
-  padding: 1.5rem;
-}
-
-.portfolio-item:hover .portfolio-overlay {
-  opacity: 1;
-}
-
-.portfolio-content {
-  color: white;
-  width: 100%;
-}
-
-.portfolio-category {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  backdrop-filter: blur(10px);
-}
-
-.portfolio-content h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: white;
-}
-
-.portfolio-content p {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  opacity: 0.9;
-}
-
+/* ALLE OVERLAYS, CONTENT UND LINKS ENTFERNT */
+.portfolio-overlay,
+.portfolio-content,
+.portfolio-category,
 .portfolio-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  transition: var(--transition-fast, all 0.3s ease);
-  text-decoration: none;
-  color: white;
-}
-
-.portfolio-link:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
+  display: none !important;
 }
 
 /* Responsive Design */
@@ -170,21 +100,21 @@
 
 @media (max-width: 768px) {
   .portfolio-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
-    gap: 16px !important;
-    grid-auto-rows: 18px !important;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+    gap: 12px !important;
+    grid-auto-rows: 12px !important;
   }
   
   .portfolio-item.portrait {
-    grid-row-end: span 22 !important;
+    grid-row-end: span 18 !important;
   }
 
   .portfolio-item.landscape {
-    grid-row-end: span 14 !important;
+    grid-row-end: span 11 !important;
   }
 
   .portfolio-item.square {
-    grid-row-end: span 18 !important;
+    grid-row-end: span 14 !important;
   }
   
   .portfolio-overlay {
@@ -203,20 +133,20 @@
 @media (max-width: 480px) {
   .portfolio-grid {
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
-    grid-auto-rows: 16px !important;
+    gap: 12px !important;
+    grid-auto-rows: 10px !important;
   }
   
   .portfolio-item.portrait {
-    grid-row-end: span 20 !important;
+    grid-row-end: span 16 !important;
   }
 
   .portfolio-item.landscape {
-    grid-row-end: span 12 !important;
+    grid-row-end: span 10 !important;
   }
 
   .portfolio-item.square {
-    grid-row-end: span 16 !important;
+    grid-row-end: span 13 !important;
   }
 }
 
@@ -303,30 +233,31 @@
   transition: opacity 0.3s ease;
 }
 
-/* Hover Enhancements */
-@media (hover: hover) {
-  .portfolio-item:hover {
-    z-index: 10;
-  }
-  
-  .portfolio-item:hover .portfolio-image::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    border-radius: 14px;
-    z-index: -1;
-    opacity: 0.3;
-  }
-}
+/* ALLE HOVER EFFEKTE ENTFERNT */
 
 /* Portfolio CTA Styling */
 .portfolio-cta {
   text-align: center;
   margin-top: 3rem;
+}
+
+/* LIGHTBOX KOMPLETT DEAKTIVIEREN */
+.lightbox-trigger,
+.lightbox-modal,
+.lightbox-overlay,
+.lightbox-container {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+/* ALLE PORTFOLIO-LINKS DEAKTIVIEREN */
+.portfolio-item a,
+.portfolio-item a:hover,
+.portfolio-item a:focus,
+.portfolio-item a:active {
+  pointer-events: none !important;
+  cursor: default !important;
+  text-decoration: none !important;
 }
 
 /* WICHTIG: Überschreibt alle anderen CSS-Dateien mit !important */
@@ -360,24 +291,24 @@
   object-fit: contain !important;
 }
 
-/* JavaScript-unabhängiges Masonry-Layout */
+/* PROFESSIONELLES Masonry ohne Extreme */
 .portfolio-grid .portfolio-item:nth-child(3n+1) {
-  grid-row-end: span 22 !important; 
-}
-
-.portfolio-grid .portfolio-item:nth-child(3n+2) {
   grid-row-end: span 18 !important; 
 }
 
-.portfolio-grid .portfolio-item:nth-child(3n+3) {
-  grid-row-end: span 26 !important; 
+.portfolio-grid .portfolio-item:nth-child(3n+2) {
+  grid-row-end: span 14 !important; 
 }
 
-/* Zusätzliche Variation für interessanteres Layout */
+.portfolio-grid .portfolio-item:nth-child(3n+3) {
+  grid-row-end: span 20 !important; 
+}
+
+/* Subtile Variation für natürliches Layout */
 .portfolio-grid .portfolio-item:nth-child(7n+1) {
-  grid-row-end: span 24 !important; 
+  grid-row-end: span 19 !important; 
 }
 
 .portfolio-grid .portfolio-item:nth-child(7n+4) {
-  grid-row-end: span 16 !important; 
+  grid-row-end: span 13 !important; 
 } 

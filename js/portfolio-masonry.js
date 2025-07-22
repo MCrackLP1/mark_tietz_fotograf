@@ -146,15 +146,15 @@ class PortfolioMasonry {
       const aspectRatio = imageWidth / imageHeight;
       
       // Calculate grid rows needed based on natural image ratio
-      const containerWidth = 300; // Base width from CSS
+      const containerWidth = 280; // Updated! Base width from CSS
       const naturalDisplayHeight = containerWidth / aspectRatio;
-      const gridRowHeight = 20; // Updated! From CSS grid-auto-rows
-      const padding = 20; // Gap from CSS
+      const gridRowHeight = 15; // Updated! From CSS grid-auto-rows
+      const padding = 15; // Updated! Gap from CSS
       
       const rowSpan = Math.ceil((naturalDisplayHeight + padding) / gridRowHeight);
       
-      // Apply calculated span - REDUCED VALUES!
-      item.style.gridRowEnd = `span ${Math.max(12, Math.min(28, rowSpan))}`;
+      // Apply calculated span - PROFESSIONAL COMPACT VALUES!
+      item.style.gridRowEnd = `span ${Math.max(10, Math.min(22, rowSpan))}`;
     });
   }
   
