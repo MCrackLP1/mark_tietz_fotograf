@@ -1,9 +1,9 @@
-/* === Minimalistisches Portfolio Grid Layout === */
+/* === Dichtes Portfolio Grid Layout ohne weiße Ränder === */
 
 .portfolio-grid-minimal {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
+  gap: 0.5rem; /* Reduzierter Gap für dichteres Layout */
   margin-top: 2rem;
   max-width: 1400px;
   margin-left: auto;
@@ -16,6 +16,7 @@
   overflow: hidden;
   background-color: #f8f9fa;
   transition: transform 0.2s ease;
+  height: 350px; /* Feste Höhe für einheitliches Raster */
 }
 
 .portfolio-tile:hover {
@@ -26,18 +27,21 @@
   display: block;
   text-decoration: none;
   color: inherit;
+  height: 100%;
 }
 
 .portfolio-tile picture {
   display: block;
   width: 100%;
+  height: 100%;
 }
 
 .portfolio-tile img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  object-fit: contain; /* Kritisch: Bilder werden NICHT beschnitten */
+  object-fit: cover; /* GEÄNDERT: Bilder füllen komplett aus, keine weißen Ränder */
+  object-position: center; /* Zentrierte Ausrichtung */
   border-radius: 4px;
 }
 
@@ -45,14 +49,33 @@
 @media (max-width: 768px) {
   .portfolio-grid-minimal {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.75rem;
+    gap: 0.4rem;
+  }
+  
+  .portfolio-tile {
+    height: 300px; /* Angepasste Höhe für Tablets */
   }
 }
 
 @media (max-width: 480px) {
   .portfolio-grid-minimal {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr; /* 2 Spalten für mobile Geräte */
+    gap: 0.3rem;
+  }
+  
+  .portfolio-tile {
+    height: 200px; /* Kompakte Höhe für mobile Geräte */
+  }
+}
+
+/* Alternative Layout für größere Bildschirme - mehr Spalten */
+@media (min-width: 1200px) {
+  .portfolio-grid-minimal {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  
+  .portfolio-tile {
+    height: 380px;
   }
 }
 
