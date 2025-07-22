@@ -1171,36 +1171,155 @@
             return methods[method] || method;
         }
 
+        function copyPDFLink() {
+            if (pdfBlob) {
+                // Option 1: Upload to cloud storage for permanent sharing
+                uploadPDFToCloud(pdfBlob).then(shareableUrl => {
+                    if (shareableUrl) {
+                        navigator.clipboard.writeText(shareableUrl).then(() => {
+                            alert(`✅ Öffentlicher PDF-Link wurde kopiert!\n\nDieser Link kann geteilt werden und ist ohne Passwort zugänglich:\n${shareableUrl}\n\nDie PDF ist 30 Tage verfügbar.`);
+                        }).catch(() => {
+                            prompt('Öffentlicher PDF-Link (Strg+C zum Kopieren):', shareableUrl);
+                        });
+                    } else {
+                        // Fallback: Download-Option anbieten
+                        alert('⚠️ Cloud-Upload nicht verfügbar.\nBitte verwenden Sie "PDF herunterladen" und senden Sie die Datei direkt.');
+                    }
+                }).catch(error => {
+                    console.error('Upload error:', error);
+                    // Fallback: Anleitung für manuellen Versand
+                    alert('⚠️ Cloud-Upload fehlgeschlagen.\n\nFür das Teilen der PDF:\n1. "PDF herunterladen" klicken\n2. Datei per E-Mail oder anderweitig versenden\n3. Oder einen Cloud-Speicher (Google Drive, Dropbox) verwenden');
+                });
+            } else {
+                alert('❌ Fehler: PDF noch nicht generiert. Bitte erstellen Sie zuerst eine PDF.');
+            }
+        }
+
+        // Cloud Upload Funktion - implementiert verschiedene Services
+        async function uploadPDFToCloud(pdfBlob) {
+            try {
+                // Option 1: TempFile Service (24h verfügbar)
+                return await uploadToTempFileService(pdfBlob);
+                
+            } catch (error) {
+                console.error('TempFile upload failed:', error);
+                
+                try {
+                    // Option 2: Alternative Service
+                    return await uploadToAlternativeService(pdfBlob);
+                } catch (alternativeError) {
+                    console.error('Alternative upload failed:', alternativeError);
+                    return null;
+                }
+            }
+        }
+
+        // TempFile.io Upload (kostenlos, 24h verfügbar)
+        async function uploadToTempFileService(pdfBlob) {
+            const formData = new FormData();
+            const fileName = `Vertrag_${contractData.clientLastName}_${new Date().toISOString().split('T')[0]}.pdf`;
+            formData.append('file', pdfBlob, fileName);
+
+            const response = await fetch('https://tmpfiles.org/api/v1/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) throw new Error('Upload failed');
+            
+            const result = await response.json();
+            
+            // TempFiles returns a URL that needs to be modified for direct access
+            if (result.data && result.data.url) {
+                // Convert from view URL to direct download URL
+                const directUrl = result.data.url.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
+                return directUrl;
+            }
+            
+            throw new Error('No URL received');
+        }
+
+        // Alternative Service: File.io (kostenlos, einmalig)
+        async function uploadToAlternativeService(pdfBlob) {
+            const formData = new FormData();
+            const fileName = `Vertrag_${contractData.clientLastName}_${new Date().toISOString().split('T')[0]}.pdf`;
+            formData.append('file', pdfBlob, fileName);
+
+            const response = await fetch('https://file.io', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) throw new Error('Alternative upload failed');
+            
+            const result = await response.json();
+            
+            if (result.success && result.link) {
+                return result.link;
+            }
+            
+            throw new Error('No URL received from alternative service');
+        }
+
+        // Erweiterte Funktion für bessere Download-Verwaltung
         function downloadPDF() {
             if (pdfBlob) {
                 const link = document.createElement('a');
+                const fileName = `Vertrag_${contractData.clientLastName}_${new Date().toISOString().split('T')[0]}.pdf`;
                 link.href = URL.createObjectURL(pdfBlob);
-                link.download = `${contractConfigs[contractType].title}_${contractData.clientLastName}_${new Date().toISOString().split('T')[0]}.pdf`;
-                link.click();
+                link.download = fileName;
+                
+                // Für bessere UX: Download-Status anzeigen
+                const originalText = document.querySelector('#pdfActions p').innerHTML;
+                document.querySelector('#pdfActions p').innerHTML = '<strong>📥 Download wird vorbereitet...</strong>';
+                
+                setTimeout(() => {
+                    link.click();
+                    document.querySelector('#pdfActions p').innerHTML = originalText;
+                    
+                    // Hinweis für Sharing anzeigen
+                    setTimeout(() => {
+                        if (confirm('💡 Tipp: Für das einfache Teilen der PDF können Sie diese in einen Cloud-Speicher (Google Drive, Dropbox, etc.) hochladen und den Link teilen.\n\nSoll ich Ihnen dabei helfen?')) {
+                            showSharingHelp();
+                        }
+                    }, 1000);
+                }, 100);
             }
+        }
+
+        // Hilfe für manuelles Sharing
+        function showSharingHelp() {
+            const helpText = `
+📤 So teilen Sie die PDF einfach:
+
+1. **Google Drive:**
+   - drive.google.com öffnen
+   - PDF hochladen
+   - Rechtsklick → "Link abrufen"
+   - Freigabe auf "Jeder mit dem Link" setzen
+
+2. **Dropbox:**
+   - dropbox.com öffnen  
+   - PDF hochladen
+   - "Teilen" klicken → Link kopieren
+
+3. **WeTransfer:**
+   - wetransfer.com öffnen
+   - PDF hochladen
+   - Link per E-Mail versenden
+
+4. **E-Mail-Anhang:**
+   - PDF direkt als Anhang versenden
+   - Bei größeren Dateien ZIP-Komprimierung verwenden
+            `;
+            
+            alert(helpText);
         }
 
         function openPDFInNewTab() {
             if (pdfBlob) {
                 const dataUrl = URL.createObjectURL(pdfBlob);
                 window.open(dataUrl, '_blank');
-            } else {
-                alert('❌ Fehler: PDF noch nicht generiert. Bitte erstellen Sie zuerst eine PDF.');
-            }
-        }
-
-        function copyPDFLink() {
-            if (pdfBlob) {
-                // Erstelle einen funktionsfähigen Data URL
-                const dataUrl = URL.createObjectURL(pdfBlob);
-                
-                // Kopiere den Data URL in die Zwischenablage
-                navigator.clipboard.writeText(dataUrl).then(() => {
-                    alert(`✅ PDF-Link wurde kopiert!\n\nSie können den Link in einem neuen Browser-Tab öffnen, um die PDF direkt anzuzeigen.\n\nHinweis: Der Link funktioniert nur in der aktuellen Browser-Session.`);
-                }).catch(() => {
-                    // Fallback für ältere Browser
-                    prompt('PDF-Link (Strg+C zum Kopieren):', dataUrl);
-                });
             } else {
                 alert('❌ Fehler: PDF noch nicht generiert. Bitte erstellen Sie zuerst eine PDF.');
             }
