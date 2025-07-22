@@ -77,6 +77,13 @@
             color: white;
             font-size: 1.2rem;
             font-weight: 600;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .header-text h1 {
@@ -256,31 +263,57 @@
 
         .pdf-actions {
             display: none;
-            background: #f0f9ff;
-            padding: 1.5rem;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 16px;
             margin-top: 1rem;
             text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .pdf-actions.show {
             display: block;
         }
 
+        .pdf-actions p {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
         .pdf-btn {
             background: var(--color-success);
             color: white;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
             cursor: pointer;
-            margin: 0 0.5rem;
-            transition: opacity 0.3s ease;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .pdf-btn:hover {
-            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.15);
+        }
+
+        .pdf-btn:active {
+            transform: translateY(0);
+        }
+
+        .pdf-btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         .contract-preview {
@@ -306,6 +339,20 @@
 
             .checkbox-group {
                 grid-template-columns: 1fr;
+            }
+
+            .pdf-btn-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .pdf-btn {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .pdf-actions {
+                padding: 1.5rem;
             }
         }
 
@@ -338,6 +385,24 @@
             .contract-preview {
                 background: #4a5568;
                 color: var(--color-text-secondary);
+            }
+
+            .pdf-actions {
+                background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+                border: 1px solid #4a5568;
+                color: var(--color-text-primary);
+            }
+
+            .pdf-actions p {
+                color: var(--color-text-primary);
+            }
+
+            .pdf-btn {
+                box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            }
+
+            .pdf-btn:hover {
+                box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.4);
             }
         }
 
@@ -440,7 +505,9 @@
     <div class="container">
         <div class="header">
             <div class="logo-section">
-                <div class="logo">MT</div>
+                <div class="logo">
+                    <img src="assets/img/favicon/android-chrome-192x192.png" alt="Mark Tietz Logo" />
+                </div>
                 <div class="header-text">
                     <h1 id="contractTitle">Vertrag erstellen</h1>
                     <p>Bitte füllen Sie alle Felder sorgfältig aus</p>
@@ -564,10 +631,39 @@
 
                 <div class="pdf-actions" id="pdfActions">
                     <p><strong>✅ PDF erfolgreich erstellt!</strong></p>
-                    <button type="button" class="pdf-btn" onclick="downloadPDF()">📥 PDF herunterladen</button>
-                    <button type="button" class="pdf-btn" onclick="openPDFInNewTab()">🔍 PDF in neuem Tab öffnen</button>
-                    <button type="button" class="pdf-btn" onclick="copyPDFLink()">🔗 Link kopieren</button>
-                    <button type="button" class="pdf-btn" onclick="createNewContract()">➕ Neuen Vertrag erstellen</button>
+                    <div class="pdf-btn-grid">
+                        <button type="button" class="pdf-btn" onclick="downloadPDF()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            PDF herunterladen
+                        </button>
+                        <button type="button" class="pdf-btn" onclick="openPDFInNewTab()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
+                                <path d="m21 3-6 6" stroke="currentColor" stroke-width="2"/>
+                                <path d="M14 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-9" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            In neuem Tab öffnen
+                        </button>
+                        <button type="button" class="pdf-btn" onclick="copyPDFLink()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2"/>
+                                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Link kopieren
+                        </button>
+                        <button type="button" class="pdf-btn" onclick="createNewContract()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="2"/>
+                                <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Neuen Vertrag erstellen
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
