@@ -1,0 +1,42 @@
+/* === Portfolio Grid Layout === */
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.portfolio-item {
+  break-inside: avoid;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.portfolio-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.portfolio-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Deaktiviert das Overlay, das über den Bildern lag */
+.portfolio-overlay {
+  display: none;
+}
+
+/* Stellt sicher, dass die Bilder im Grid richtig skaliert werden */
+@supports (grid-template-rows: masonry) {
+  .portfolio-grid {
+    grid-template-rows: masonry;
+  }
+} 
