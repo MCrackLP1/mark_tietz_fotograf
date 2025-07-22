@@ -1,43 +1,79 @@
-/* === Portfolio Grid Layout === */
+/* === Minimalistisches Portfolio Grid Layout === */
 
-.portfolio-grid {
+.portfolio-grid-minimal {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
   margin-top: 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.portfolio-item {
-  break-inside: avoid;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.portfolio-tile {
   position: relative;
-  background-color: #1a1a1a; /* Dunkler Hintergrund für leere Bereiche */
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  transition: transform 0.2s ease;
 }
 
-.portfolio-image {
+.portfolio-tile:hover {
+  transform: translateY(-2px);
+}
+
+.portfolio-tile a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.portfolio-tile picture {
   display: block;
   width: 100%;
-  height: auto;
 }
 
-.portfolio-image img {
-  display: block;
+.portfolio-tile img {
   width: 100%;
   height: auto;
-  object-fit: contain; /* Stellt sicher, dass das ganze Bild sichtbar ist */
-  border-radius: 8px;
+  display: block;
+  object-fit: contain; /* Kritisch: Bilder werden NICHT beschnitten */
+  border-radius: 4px;
 }
 
-/* Deaktiviert das Overlay, das über den Bildern lag */
-.portfolio-overlay {
-  display: none;
-}
-
-/* Stellt sicher, dass die Bilder im Grid richtig skaliert werden */
-@supports (grid-template-rows: masonry) {
-  .portfolio-grid {
-    grid-template-rows: masonry;
+/* Responsives Design */
+@media (max-width: 768px) {
+  .portfolio-grid-minimal {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.75rem;
   }
+}
+
+@media (max-width: 480px) {
+  .portfolio-grid-minimal {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* Lightbox-Trigger Styling */
+.portfolio-tile .lightbox-trigger {
+  cursor: pointer;
+}
+
+.portfolio-tile .lightbox-trigger:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Loading State */
+.portfolio-tile img:not(.loaded) {
+  opacity: 0.7;
+  filter: blur(1px);
+}
+
+.portfolio-tile img.loaded {
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.3s ease, filter 0.3s ease;
 } 

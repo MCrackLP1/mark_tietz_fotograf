@@ -1,18 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.portfolio-filters .filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-grid .portfolio-item');
-    const loadMoreBtn = document.getElementById('load-more');
+    const portfolioTiles = document.querySelectorAll('.portfolio-grid-minimal .portfolio-tile');
 
-    // Initialize portfolio items visibility
-    if (portfolioItems.length > 0) {
-        portfolioItems.forEach(item => {
-            item.style.opacity = '1';
-            item.style.transform = 'scale(1)';
-            item.style.display = 'block';
+    // Initialize portfolio tiles visibility
+    if (portfolioTiles.length > 0) {
+        portfolioTiles.forEach(tile => {
+            tile.style.opacity = '1';
+            tile.style.transform = 'scale(1)';
+            tile.style.display = 'block';
         });
     }
-
-    // No filtering - all portfolio items are always visible
 
     // Enhanced lightbox with preloading
     const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
@@ -104,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         img.onerror = () => {
-
             if (lightboxImage) {
                 lightboxImage.style.opacity = '1';
                 lightboxImage.alt = 'Bild konnte nicht geladen werden';
@@ -147,30 +142,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Load more functionality (if needed)
-    loadMoreBtn?.addEventListener('click', function() {
-        this.innerHTML = 'Laden...';
-        this.disabled = true;
-        
-        // Simulate loading more content
-        setTimeout(() => {
-            this.innerHTML = 'Mehr laden';
-            this.disabled = false;
-        }, 1500);
-    });
-
-    // Add smooth scrolling to portfolio anchors
-    const portfolioAnchors = document.querySelectorAll('a[href^="#"]');
-    portfolioAnchors.forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+    // Image loading enhancement
+    const portfolioImages = document.querySelectorAll('.portfolio-tile img');
+    portfolioImages.forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+        }
     });
 });
