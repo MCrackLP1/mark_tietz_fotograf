@@ -410,17 +410,18 @@
         .pdf-content {
             display: none;
             background: white;
-            padding: 40px;
+            padding: 40px 40px 50px 40px; /* Extra bottom padding for footer space */
             font-family: Arial, sans-serif;
             font-size: 11px;
             line-height: 1.4;
             color: #333;
             width: 210mm;
             margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .pdf-page {
-            min-height: 257mm; /* A4 height minus header/footer space */
+            min-height: 240mm; /* A4 height minus space for jsPDF footer */
             page-break-after: always;
             padding-bottom: 30px;
             position: relative;
@@ -512,17 +513,8 @@
         }
 
         .pdf-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 8px;
-            color: #666;
-            border-top: 1px solid #ddd;
-            padding: 10px 40px;
-            background: white;
-            z-index: 1000;
+            /* Footer wird nur über jsPDF hinzugefügt, nicht im HTML */
+            display: none;
         }
 
         .page-break {
@@ -1367,11 +1359,13 @@
                 backgroundColor: '#ffffff',
                 logging: false,
                 imageTimeout: 10000,
-                removeContainer: true
+                removeContainer: true,
+                height: element.scrollHeight,
+                windowWidth: 1200
             }).then(canvas => {
                 const imgData = canvas.toDataURL('image/png');
                 const imgWidth = 210;
-                const pageHeight = 297;
+                const pageHeight = 270; // Reduced to leave space for footer
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 
                 let heightLeft = imgHeight;
@@ -1413,15 +1407,15 @@
 
         function addFooterToPage(pdf, pageNumber) {
             const pageHeight = 297;
-            const footerY = pageHeight - 15; // 15mm from bottom
+            const footerStartY = pageHeight - 20; // 20mm from bottom for more space
             
             // Footer line
             pdf.setDrawColor(221, 221, 221);
             pdf.setLineWidth(0.1);
-            pdf.line(20, footerY - 5, 190, footerY - 5);
+            pdf.line(15, footerStartY, 195, footerStartY);
             
             // Footer text
-            pdf.setFontSize(8);
+            pdf.setFontSize(7);
             pdf.setTextColor(102, 102, 102);
             
             const footerText = [
@@ -1431,10 +1425,10 @@
                 `Seite ${pageNumber} | Erstellt am: ${new Date().toLocaleDateString('de-DE')}`
             ];
             
-            let yOffset = footerY;
+            let yOffset = footerStartY + 3;
             footerText.forEach(line => {
                 pdf.text(line, 105, yOffset, { align: 'center' });
-                yOffset += 3;
+                yOffset += 2.5;
             });
         }
 
