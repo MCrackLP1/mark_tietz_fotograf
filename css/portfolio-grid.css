@@ -1,9 +1,8 @@
-/* === Dichtes Portfolio Grid Layout ohne weiße Ränder === */
+/* === Masonry Portfolio Grid - Keine Abschneidung, dichtes Layout === */
 
 .portfolio-grid-minimal {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0.5rem; /* Reduzierter Gap für dichteres Layout */
+  column-count: 4; /* Masonry-Layout mit Spalten */
+  column-gap: 0.5rem;
   margin-top: 2rem;
   max-width: 1400px;
   margin-left: auto;
@@ -16,7 +15,10 @@
   overflow: hidden;
   background-color: #f8f9fa;
   transition: transform 0.2s ease;
-  height: 350px; /* Feste Höhe für einheitliches Raster */
+  display: inline-block; /* Wichtig für Masonry */
+  width: 100%;
+  margin-bottom: 0.5rem;
+  break-inside: avoid; /* Verhindert Aufspaltung */
 }
 
 .portfolio-tile:hover {
@@ -27,55 +29,62 @@
   display: block;
   text-decoration: none;
   color: inherit;
-  height: 100%;
 }
 
 .portfolio-tile picture {
   display: block;
   width: 100%;
-  height: 100%;
 }
 
 .portfolio-tile img {
   width: 100%;
-  height: 100%;
+  height: auto; /* Natürliche Proportionen beibehalten */
   display: block;
-  object-fit: cover; /* GEÄNDERT: Bilder füllen komplett aus, keine weißen Ränder */
-  object-position: center; /* Zentrierte Ausrichtung */
+  object-fit: contain; /* Keine Abschneidung */
   border-radius: 4px;
 }
 
-/* Responsives Design */
+/* Responsives Design - weniger Spalten auf kleineren Bildschirmen */
+@media (max-width: 1200px) {
+  .portfolio-grid-minimal {
+    column-count: 3;
+  }
+}
+
 @media (max-width: 768px) {
   .portfolio-grid-minimal {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.4rem;
+    column-count: 2;
+    column-gap: 0.4rem;
   }
   
   .portfolio-tile {
-    height: 300px; /* Angepasste Höhe für Tablets */
+    margin-bottom: 0.4rem;
   }
 }
 
 @media (max-width: 480px) {
   .portfolio-grid-minimal {
-    grid-template-columns: 1fr 1fr; /* 2 Spalten für mobile Geräte */
-    gap: 0.3rem;
+    column-count: 2; /* 2 Spalten auch auf sehr kleinen Geräten */
+    column-gap: 0.3rem;
   }
   
   .portfolio-tile {
-    height: 200px; /* Kompakte Höhe für mobile Geräte */
+    margin-bottom: 0.3rem;
   }
 }
 
-/* Alternative Layout für größere Bildschirme - mehr Spalten */
-@media (min-width: 1200px) {
+/* Alternative für Browser die Masonry nicht unterstützen */
+@supports not (column-count: 1) {
   .portfolio-grid-minimal {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.5rem;
+    column-count: unset;
   }
   
   .portfolio-tile {
-    height: 380px;
+    display: block;
+    margin-bottom: 0;
   }
 }
 
