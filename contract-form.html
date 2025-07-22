@@ -565,6 +565,7 @@
                 <div class="pdf-actions" id="pdfActions">
                     <p><strong>✅ PDF erfolgreich erstellt!</strong></p>
                     <button type="button" class="pdf-btn" onclick="downloadPDF()">📥 PDF herunterladen</button>
+                    <button type="button" class="pdf-btn" onclick="openPDFInNewTab()">🔍 PDF in neuem Tab öffnen</button>
                     <button type="button" class="pdf-btn" onclick="copyPDFLink()">🔗 Link kopieren</button>
                     <button type="button" class="pdf-btn" onclick="createNewContract()">➕ Neuen Vertrag erstellen</button>
                 </div>
@@ -1179,13 +1180,30 @@
             }
         }
 
+        function openPDFInNewTab() {
+            if (pdfBlob) {
+                const dataUrl = URL.createObjectURL(pdfBlob);
+                window.open(dataUrl, '_blank');
+            } else {
+                alert('❌ Fehler: PDF noch nicht generiert. Bitte erstellen Sie zuerst eine PDF.');
+            }
+        }
+
         function copyPDFLink() {
-            // In a real implementation, you would upload the PDF to a server and get a shareable link
-            // For now, we'll just show a placeholder
-            const link = `https://mark-tietz.photos/contracts/view/${Date.now()}`;
-            navigator.clipboard.writeText(link).then(() => {
-                alert('Link wurde in die Zwischenablage kopiert!\n\nHinweis: Dies ist ein Beispiel-Link. In der finalen Version würde hier ein echter Download-Link generiert.');
-            });
+            if (pdfBlob) {
+                // Erstelle einen funktionsfähigen Data URL
+                const dataUrl = URL.createObjectURL(pdfBlob);
+                
+                // Kopiere den Data URL in die Zwischenablage
+                navigator.clipboard.writeText(dataUrl).then(() => {
+                    alert(`✅ PDF-Link wurde kopiert!\n\nSie können den Link in einem neuen Browser-Tab öffnen, um die PDF direkt anzuzeigen.\n\nHinweis: Der Link funktioniert nur in der aktuellen Browser-Session.`);
+                }).catch(() => {
+                    // Fallback für ältere Browser
+                    prompt('PDF-Link (Strg+C zum Kopieren):', dataUrl);
+                });
+            } else {
+                alert('❌ Fehler: PDF noch nicht generiert. Bitte erstellen Sie zuerst eine PDF.');
+            }
         }
 
         function createNewContract() {
