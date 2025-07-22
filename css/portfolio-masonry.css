@@ -2,11 +2,12 @@
 
 /* CSS Grid Masonry Layout */
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-rows: 10px; /* Kleine Zeilenhöhe für flexible Positionierung */
-  gap: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  grid-auto-rows: 5px !important; /* Sehr kleine Zeilenhöhe für echtes Masonry */
+  gap: 20px !important;
   margin-top: 2rem;
+  align-items: start !important;
 }
 
 /* Portfolio Items ohne feste Seitenverhältnisse */
@@ -19,8 +20,9 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   
-  /* Entferne das feste aspect-ratio */
-  /* aspect-ratio: 4/5; <- ENTFERNT! */
+  /* Entferne das feste aspect-ratio - WICHTIG! */
+  aspect-ratio: unset !important;
+  height: auto !important;
 }
 
 .portfolio-item:hover {
@@ -40,11 +42,12 @@
 
 .portfolio-image img {
   width: 100%;
-  height: auto; /* Wichtig: Natürliche Höhe! */
-  object-fit: contain; /* Zeigt das komplette Bild ohne Zuschnitt */
-  object-position: center;
+  height: auto !important; /* Wichtig: Natürliche Höhe! */
+  object-fit: contain !important; /* Zeigt das komplette Bild ohne Zuschnitt */
+  object-position: center !important;
   transition: transform 0.3s ease;
   display: block;
+  max-height: none !important;
 }
 
 .portfolio-item:hover .portfolio-image img {
@@ -70,15 +73,20 @@
 
 /* Automatische Größenerkennung basierend auf Bildformat */
 .portfolio-item.portrait {
-  grid-row-end: span 45; /* Höher für Hochformat */
+  grid-row-end: span 80 !important; /* Viel höher für Hochformat */
 }
 
 .portfolio-item.landscape {
-  grid-row-end: span 25; /* Niedriger für Querformat */
+  grid-row-end: span 40 !important; /* Niedriger für Querformat */
 }
 
 .portfolio-item.square {
-  grid-row-end: span 35; /* Mittel für quadratische Bilder */
+  grid-row-end: span 60 !important; /* Mittel für quadratische Bilder */
+}
+
+/* Fallback für alle Items ohne spezifische Klasse */
+.portfolio-item:not(.portrait):not(.landscape):not(.square) {
+  grid-row-end: span 60 !important;
 }
 
 /* Portfolio Overlay */
@@ -319,4 +327,57 @@
 .portfolio-cta {
   text-align: center;
   margin-top: 3rem;
+}
+
+/* WICHTIG: Überschreibt alle anderen CSS-Dateien mit !important */
+.portfolio-grid .portfolio-item {
+  aspect-ratio: unset !important;
+  height: auto !important;
+}
+
+.portfolio-grid .portfolio-item .portfolio-image {
+  height: auto !important;
+  aspect-ratio: unset !important;
+}
+
+.portfolio-grid .portfolio-item .portfolio-image img,
+.portfolio-grid .portfolio-item .portfolio-image picture img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  max-height: none !important;
+  aspect-ratio: unset !important;
+}
+
+/* Spezifische Überschreibung für optimized-images.css */
+.portfolio-image picture {
+  height: auto !important;
+}
+
+.portfolio-image picture img {
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* JavaScript-unabhängiges Masonry-Layout */
+.portfolio-grid .portfolio-item:nth-child(3n+1) {
+  grid-row-end: span 70 !important; 
+}
+
+.portfolio-grid .portfolio-item:nth-child(3n+2) {
+  grid-row-end: span 50 !important; 
+}
+
+.portfolio-grid .portfolio-item:nth-child(3n+3) {
+  grid-row-end: span 90 !important; 
+}
+
+/* Zusätzliche Variation für interessanteres Layout */
+.portfolio-grid .portfolio-item:nth-child(7n+1) {
+  grid-row-end: span 85 !important; 
+}
+
+.portfolio-grid .portfolio-item:nth-child(7n+4) {
+  grid-row-end: span 45 !important; 
 } 
