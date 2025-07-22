@@ -606,8 +606,25 @@
                         </div>
                     </div>
                     <div class="form-group full-width">
+                        <label>Zusatzleistungen</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="extraServices" value="stylist">
+                                <label>Stylistin (95 €)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="extraServices" value="videographer">
+                                <label>Videograf (Levin Dumlu / LDK Films - Preis auf Anfrage)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="extraServices" value="express">
+                                <label>Expresslieferung (120 €)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
                         <label for="additionalCosts">Zusätzliche Kosten / Anmerkungen</label>
-                        <textarea id="additionalCosts" name="additionalCosts" maxlength="300" placeholder="z.B. Anfahrt, Equipment, Nachbearbeitung..."></textarea>
+                        <textarea id="additionalCosts" name="additionalCosts" maxlength="300" placeholder="z.B. spezielle Wünsche, besondere Anforderungen..."></textarea>
                     </div>
                 </div>
 
@@ -1002,7 +1019,7 @@
             contractData = Object.fromEntries(formData.entries());
 
             // Collect checkbox groups
-            const checkboxGroups = ['modelRights', 'photographerRights', 'weddingExtras', 'businessRights', 'eventExtras'];
+            const checkboxGroups = ['modelRights', 'photographerRights', 'weddingExtras', 'businessRights', 'eventExtras', 'extraServices'];
             checkboxGroups.forEach(group => {
                 const checkboxes = document.querySelectorAll(`input[name="${group}"]:checked`);
                 contractData[group] = Array.from(checkboxes).map(cb => cb.value);
@@ -1110,14 +1127,15 @@
                         </div>
                     </div>
                     <div class="pdf-company-info">
-                        <strong>Mark Tietz</strong><br>
-                        Königpl. 3<br>
+                        <strong>Mark Tietz Fotograf</strong><br>
+                        Königplatz 3<br>
                         87448 Waltenhofen<br><br>
-                        Tel: 01741632129<br>
-                        E-Mail: mark.briehn@web.de<br>
-                        Web: mark-tietz.photos<br><br>
-                        Steuernr: 127/280/90241<br>
-                        Inhaber: Mark Tietz
+                        Tel: +49 174 1632129<br>
+                        E-Mail: info@mark-tietz.photos<br>
+                        Web: www.mark-tietz.photos<br><br>
+                        Inhaber: Mark Tietz<br>
+                        Geb.: 25. Januar 1997<br>
+                        Verfügbarkeit: 24/7 nach Vereinbarung
                     </div>
                 </div>
 
@@ -1157,18 +1175,49 @@
 
                 ${contractType !== 'tfp' ? `
                 <div class="pdf-section">
-                    <h4>Konditionen</h4>
+                    <h4>Preise und Zahlungsbedingungen</h4>
                     <table class="pdf-table">
                         <tr>
+                            <td><strong>Leistung:</strong></td>
+                            <td>${getServiceDescription(contractType)}</td>
+                        </tr>
+                        <tr>
                             <td><strong>Gesamtpreis:</strong></td>
-                            <td>${contractData.totalPrice ? contractData.totalPrice + ' €' : 'Nach Vereinbarung'}</td>
+                            <td>${contractData.totalPrice ? contractData.totalPrice + ' €' : getServicePrice(contractType)}</td>
                         </tr>
                         <tr>
                             <td><strong>Zahlungsweise:</strong></td>
-                            <td>${getPaymentMethodText(contractData.paymentMethod)}</td>
+                            <td><strong>Zahlung im Voraus erforderlich</strong><br>${getPaymentMethodText(contractData.paymentMethod)}</td>
                         </tr>
                     </table>
-                    ${contractData.additionalCosts ? `<p><strong>Zusätzliche Kosten:</strong> ${contractData.additionalCosts}</p>` : ''}
+                    ${contractData.extraServices && contractData.extraServices.length > 0 ? `
+                    <h4 style="margin-top: 15px;">Zusatzleistungen</h4>
+                    <ul style="font-size: 9px; margin: 0; padding-left: 15px;">
+                        ${contractData.extraServices.map(service => {
+                            const serviceTexts = {
+                                'stylist': 'Stylistin: 95 €',
+                                'videographer': 'Videograf (Levin Dumlu / LDK Films): Preis auf Anfrage',
+                                'express': 'Expresslieferung: 120 €'
+                            };
+                            return `<li>${serviceTexts[service] || service}</li>`;
+                        }).join('')}
+                    </ul>
+                    ` : ''}
+                    ${contractData.additionalCosts ? `<p><strong>Weitere Anmerkungen:</strong> ${contractData.additionalCosts}</p>` : ''}
+                    
+                    <h4 style="margin-top: 20px;">Bankverbindung</h4>
+                    <p style="background: #f8f9fa; padding: 8px; border-radius: 4px; font-size: 9px;">
+                        <strong>Banküberweisung:</strong><br>
+                        IBAN: DE56 1001 0010 0776 3691 14<br>
+                        Bank: Postbank<br>
+                        Inhaber: Mark Tietz<br><br>
+                        <strong>PayPal:</strong> Link mit Betrag wird bei Buchung versendet
+                    </p>
+                    
+                    <h4 style="margin-top: 15px;">Reisegebühren</h4>
+                    <p style="font-size: 9px;">
+                        Bei Shootings unter 250 €: Ab 30 km Entfernung 10 € je weitere 10 km
+                    </p>
                 </div>
                 ` : ''}
 
@@ -1180,14 +1229,44 @@
                 ` : ''}
 
                 <div class="pdf-section">
-                    <h4>Allgemeine Bedingungen</h4>
+                    <h4>Stornierungsbedingungen</h4>
+                    <table class="pdf-table" style="font-size: 8px;">
+                        <thead>
+                            <tr>
+                                <th>Vorlauf</th>
+                                <th>Mo.–Fr.</th>
+                                <th>Sa./So.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>&gt; 5 Tage</td><td>0%</td><td>0%</td></tr>
+                            <tr><td>5 Tage</td><td>0%</td><td>20%</td></tr>
+                            <tr><td>4 Tage</td><td>0%</td><td>35%</td></tr>
+                            <tr><td>3 Tage</td><td>15%</td><td>45%</td></tr>
+                            <tr><td>2 Tage</td><td>30%</td><td>60%</td></tr>
+                            <tr><td>1 Tag</td><td>50%</td><td>70%</td></tr>
+                            <tr><td>0 Tage</td><td>75%</td><td>75%</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h4 style="margin-top: 15px;">Lieferzeiten</h4>
+                    <p style="font-size: 9px;">
+                        <strong>Standardlieferung:</strong> ca. 6 Tage<br>
+                        <strong>Expresslieferung:</strong> gegen Aufpreis von 120 €
+                    </p>
+
+                    <h4 style="margin-top: 15px;">Allgemeine Geschäftsbedingungen</h4>
                     <p style="font-size: 9px; line-height: 1.3;">
-                        1. Dieser Vertrag regelt die Zusammenarbeit zwischen dem Fotografen Mark Tietz und dem oben genannten Kunden.<br>
-                        2. Terminverschiebungen sind bis 48h vor dem Shooting kostenfrei möglich.<br>
-                        3. Bei Ausfall durch höhere Gewalt (Wetter, Krankheit) wird ein Ersatztermin vereinbart.<br>
-                        4. Die Bildbearbeitung erfolgt nach künstlerischem Ermessen des Fotografen.<br>
-                        5. Nutzungsrechte werden gemäß den oben vereinbarten Bedingungen übertragen.<br>
-                        6. Der Fotograf behält sich das Recht vor, Bilder für eigene Werbezwecke zu verwenden, sofern nicht anders vereinbart.
+                        1. <strong>Vertragspartner:</strong> Dieser Vertrag regelt die Zusammenarbeit zwischen Mark Tietz Fotograf und dem oben genannten Kunden.<br>
+                        2. <strong>Terminvereinbarung:</strong> Bei Hochzeiten mindestens 1 Woche Vorlauf (Ausnahmen nach Absprache möglich).<br>
+                        3. <strong>Höhere Gewalt:</strong> Bei Ausfall durch höhere Gewalt (Wetter, Krankheit) wird ein Ersatztermin vereinbart.<br>
+                        4. <strong>Bildbearbeitung:</strong> Erfolgt nach künstlerischem Ermessen des Fotografen. Kundenkontakt während Bearbeitung persönlich durch Mark Tietz.<br>
+                        5. <strong>Nutzungsrechte:</strong> Werden gemäß den oben vereinbarten Bedingungen übertragen.<br>
+                        6. <strong>Werbezwecke:</strong> Der Fotograf behält sich das Recht vor, Bilder für eigene Werbezwecke zu verwenden, sofern nicht anders vereinbart.<br>
+                        7. <strong>Nachbesserungen:</strong> Rückmeldungen und Nachbesserungen sind nach individueller Absprache möglich.<br>
+                        8. <strong>Verfügbarkeit:</strong> 24/7 nach Vereinbarung. Besondere Kundenwünsche nur nach Absprache.<br>
+                        9. <strong>Haftung:</strong> Die Haftung beschränkt sich auf den Auftragswert. Weitergehende Ansprüche sind ausgeschlossen.<br>
+                        10. <strong>Gerichtsstand:</strong> Erfüllungsort und Gerichtsstand ist Waltenhofen.
                     </p>
                 </div>
 
@@ -1205,8 +1284,9 @@
                 </div>
 
                 <div class="pdf-footer">
-                    <strong>Mark Tietz Fotografie</strong> | Königpl. 3, 87448 Waltenhofen | Tel: 01741632129 | mark.briehn@web.de<br>
-                    Steuernummer: 127/280/90241 | Bankverbindung: Postbank Ndl der Deutsche Bank | IBAN: DE56 1001 0010 0776 3691 14 | BIC: PBNK DEFF XXX<br>
+                    <strong>Mark Tietz Fotograf</strong> | Königplatz 3, 87448 Waltenhofen | Tel: +49 174 1632129 | info@mark-tietz.photos<br>
+                    Website: www.mark-tietz.photos | Inhaber: Mark Tietz (geb. 25. Januar 1997)<br>
+                    Bankverbindung: Postbank | IBAN: DE56 1001 0010 0776 3691 14 | Verfügbarkeit: 24/7 nach Vereinbarung<br>
                     Erstellt am: ${currentDate}
                 </div>
             `;
@@ -1265,6 +1345,28 @@
                 'tfp': 'TFP (kostenfrei)'
             };
             return methods[method] || method;
+        }
+
+        function getServiceDescription(contractType) {
+            const descriptions = {
+                'wedding': 'Hochzeitsfotografie',
+                'business': 'Business- und Bewerbungsfotos',
+                'portrait': 'Porträt- und Familienfotografie',
+                'event': 'Eventfotografie',
+                'family': 'Baby- und Schwangerschaftsfotografie'
+            };
+            return descriptions[contractType] || 'Fotografie-Dienstleistung';
+        }
+
+        function getServicePrice(contractType) {
+            const prices = {
+                'wedding': '1.000 € - 1.600 € (je nach Dauer und Zusatzleistungen)',
+                'business': '80 € - 96 € pro Session',
+                'portrait': '180 € - 240 € (einstündige Shootings, inklusive digitaler Bilder)',
+                'event': '80 € - 96 € pro Stunde',
+                'family': '180 € - 240 € pro Stunde'
+            };
+            return prices[contractType] || 'Nach Vereinbarung';
         }
 
         function copyPDFLink() {

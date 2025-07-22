@@ -74,29 +74,45 @@ Das System unterstützt 6 verschiedene Vertragstypen:
 ### 5. PDF-Generation
 
 #### Features:
-- **Professioneller Briefkopf** mit Logo (MT in kreisrunder Form)
+- **Professioneller Briefkopf** mit Logo
 - **Vollständige Geschäftsdaten:**
-  - Mark Tietz
-  - Königpl. 3, 87448 Waltenhofen
-  - Steuernummer: 127/280/90241
-  - Inhaber: Mark Tietz
-  - Tel: 01741632129
-  - E-Mail: mark.briehn@web.de
-  - Website: mark-tietz.de
-  - Bank: Postbank Ndl der Deutsche Bank
+  - Mark Tietz Fotograf
+  - Königplatz 3, 87448 Waltenhofen
+  - Inhaber: Mark Tietz (geb. 25. Januar 1997)
+  - Tel: +49 174 1632129
+  - E-Mail: info@mark-tietz.photos
+  - Website: www.mark-tietz.photos
+  - Bank: Postbank
   - IBAN: DE56 1001 0010 0776 3691 14
-  - BIC: PBNK DEFF XXX
+  - Verfügbarkeit: 24/7 nach Vereinbarung
+
+- **Preisgestaltung:**
+  - Porträt- und Familienfotografie: 180€ - 240€ (einstündige Shootings)
+  - Business- und Bewerbungsfotos: 80€ - 96€ pro Session
+  - Eventfotografie: 80€ - 96€ pro Stunde
+  - Baby- und Schwangerschaftsfotografie: 180€ - 240€ pro Stunde
+  - Hochzeitsfotografie: 1.000€ - 1.600€ (je nach Dauer und Zusatzleistungen)
+
+- **Zusatzleistungen:**
+  - Stylistin: 95€
+  - Videograf (Levin Dumlu / LDK Films): Preis auf Anfrage
+  - Expresslieferung: 120€ Aufpreis
 
 #### PDF-Struktur:
-- **Header:** Logo + Geschäftsdaten
+- **Header:** Logo + vollständige Geschäftsdaten
 - **Titel:** Vertragstyp
 - **Kundendaten:** Vollständige Kontaktinformationen
-- **Shooting Details:** Tabellendarstellung
-- **Vertragsspezifische Details:** Je nach Typ
-- **Konditionen:** Preise und Zahlungsweise (außer TFP)
-- **Allgemeine Bedingungen:** Standardklauseln
+- **Shooting Details:** Tabellendarstellung mit Datum, Zeit, Dauer, Location
+- **Vertragsspezifische Details:** Je nach Vertragstyp
+- **Preise und Zahlungsbedingungen:** Vollständige Preisliste und Zahlungsmodalitäten
+- **Bankverbindung:** IBAN, Bank, PayPal-Hinweis
+- **Zusatzleistungen:** Stylistin, Videograf, Expresslieferung
+- **Reisegebühren:** Automatische Berechnung ab 30km
+- **Stornierungsbedingungen:** Detaillierte Tabelle für Wochentage/Wochenende
+- **Lieferzeiten:** Standard (6 Tage) und Express (120€ Aufpreis)
+- **Allgemeine Geschäftsbedingungen:** Rechtssichere AGB mit 10 Punkten
 - **Unterschriftenfelder:** Kunde und Fotograf
-- **Footer:** Vollständige Geschäftsdaten + Erstellungsdatum
+- **Footer:** Vollständige Geschäftsdaten, Bankverbindung + Erstellungsdatum
 
 #### PDF-Aktionen:
 - **Download:** Direkt als PDF-Datei herunterladen
