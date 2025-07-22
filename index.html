@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="css/visibility-improvements.css">
   <link rel="stylesheet" href="css/enhanced-animations.css">
   <link rel="stylesheet" href="css/image-quality-fix.css">
+  <link rel="stylesheet" href="css/optimized-images.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -123,7 +124,22 @@
       <div class="hero-background">
         <div class="hero-video-container">
           <div class="hero-image-wrapper">
-            <img src="assets/img/portfolio/photographer-hero.webp" alt="Professionelle Fotografie von Mark Tietz" class="hero-image" loading="eager">
+            <picture class="hero-image">
+              <source type="image/avif" srcset="
+                assets/img/portfolio/photographer-hero-small.avif 400w,
+                assets/img/portfolio/photographer-hero-medium.avif 800w,
+                assets/img/portfolio/photographer-hero-large.avif 1200w"
+                sizes="100vw">
+              <source type="image/webp" srcset="
+                assets/img/portfolio/photographer-hero-small.webp 400w,
+                assets/img/portfolio/photographer-hero-medium.webp 800w,
+                assets/img/portfolio/photographer-hero-large.webp 1200w"
+                sizes="100vw">
+              <img src="assets/img/portfolio/photographer-hero-medium.webp" 
+                   alt="Professionelle Fotografie von Mark Tietz" 
+                   class="hero-image" 
+                   loading="eager">
+            </picture>
           </div>
           <div class="floating-particles">
             <div class="particle"></div>
@@ -203,14 +219,26 @@
           <!-- Studio Portraits -->
           <div class="portfolio-item studio" data-category="studio">
             <div class="portfolio-image">
-              <img src="assets/img/portfolio/studio_portrait-1.webp" alt="Studio Portrait - Charakterportrait" loading="lazy">
+              <picture>
+                <source type="image/avif" srcset="
+                  assets/img/portfolio/studio_portrait-1-small.avif 400w,
+                  assets/img/portfolio/studio_portrait-1-medium.avif 800w,
+                  assets/img/portfolio/studio_portrait-1-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <source type="image/webp" srcset="
+                  assets/img/portfolio/studio_portrait-1-small.webp 400w,
+                  assets/img/portfolio/studio_portrait-1-medium.webp 800w,
+                  assets/img/portfolio/studio_portrait-1-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <img src="assets/img/portfolio/studio_portrait-1-medium.webp" alt="Studio Portrait - Charakterportrait" loading="lazy">
+              </picture>
             </div>
             <div class="portfolio-overlay">
               <div class="portfolio-content">
                 <span class="portfolio-category">Studio</span>
                 <h3>Charakterportrait</h3>
                 <p>Professionelle Studioaufnahme</p>
-                <a href="assets/img/portfolio/studio_portrait-1.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Charakterportrait" data-description="Professionelle Studioaufnahme">
+                <a href="assets/img/portfolio/studio_portrait-1-large.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Charakterportrait" data-description="Professionelle Studioaufnahme">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
                     <path d="M10 14L21 3" stroke="currentColor" stroke-width="2"/>
@@ -224,14 +252,26 @@
           <!-- Portrait -->
           <div class="portfolio-item portrait" data-category="portrait">
             <div class="portfolio-image">
-              <img src="assets/img/portfolio/portrait-1.webp" alt="Portrait - Natürliche Ausstrahlung" loading="lazy">
+              <picture>
+                <source type="image/avif" srcset="
+                  assets/img/portfolio/portrait-1-small.avif 400w,
+                  assets/img/portfolio/portrait-1-medium.avif 800w,
+                  assets/img/portfolio/portrait-1-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <source type="image/webp" srcset="
+                  assets/img/portfolio/portrait-1-small.webp 400w,
+                  assets/img/portfolio/portrait-1-medium.webp 800w,
+                  assets/img/portfolio/portrait-1-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <img src="assets/img/portfolio/portrait-1-medium.webp" alt="Portrait - Natürliche Ausstrahlung" loading="lazy">
+              </picture>
             </div>
             <div class="portfolio-overlay">
               <div class="portfolio-content">
                 <span class="portfolio-category">Portrait</span>
                 <h3>Natürlich</h3>
                 <p>Authentische Persönlichkeit</p>
-                <a href="assets/img/portfolio/portrait-1.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Natürlich" data-description="Authentische Persönlichkeit">
+                <a href="assets/img/portfolio/portrait-1-large.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Natürlich" data-description="Authentische Persönlichkeit">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
                     <path d="M10 14L21 3" stroke="currentColor" stroke-width="2"/>
@@ -245,14 +285,26 @@
           <!-- Outdoor Portrait -->
           <div class="portfolio-item outdoor" data-category="outdoor">
             <div class="portfolio-image">
-              <img src="assets/img/portfolio/portrait_2-4.webp" alt="Outdoor Portrait - Goldene Stunde" loading="lazy">
+              <picture>
+                <source type="image/avif" srcset="
+                  assets/img/portfolio/portrait_2-4-small.avif 400w,
+                  assets/img/portfolio/portrait_2-4-medium.avif 800w,
+                  assets/img/portfolio/portrait_2-4-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <source type="image/webp" srcset="
+                  assets/img/portfolio/portrait_2-4-small.webp 400w,
+                  assets/img/portfolio/portrait_2-4-medium.webp 800w,
+                  assets/img/portfolio/portrait_2-4-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <img src="assets/img/portfolio/portrait_2-4-medium.webp" alt="Outdoor Portrait - Goldene Stunde" loading="lazy">
+              </picture>
             </div>
             <div class="portfolio-overlay">
               <div class="portfolio-content">
                 <span class="portfolio-category">Outdoor</span>
                 <h3>Goldene Stunde</h3>
                 <p>Warmes Abendlicht</p>
-                <a href="assets/img/portfolio/portrait_2-4.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Goldene Stunde" data-description="Warmes Abendlicht">
+                <a href="assets/img/portfolio/portrait_2-4-large.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Goldene Stunde" data-description="Warmes Abendlicht">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
                     <path d="M10 14L21 3" stroke="currentColor" stroke-width="2"/>
@@ -266,14 +318,26 @@
           <!-- Hochzeit -->
           <div class="portfolio-item hochzeit" data-category="hochzeit">
             <div class="portfolio-image">
-              <img src="assets/img/portfolio/DSC02141-Verbessert-NR.webp" alt="Hochzeit - Romantische Zeremonie" loading="lazy">
+              <picture>
+                <source type="image/avif" srcset="
+                  assets/img/portfolio/DSC02141-Verbessert-NR-small.avif 400w,
+                  assets/img/portfolio/DSC02141-Verbessert-NR-medium.avif 800w,
+                  assets/img/portfolio/DSC02141-Verbessert-NR-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <source type="image/webp" srcset="
+                  assets/img/portfolio/DSC02141-Verbessert-NR-small.webp 400w,
+                  assets/img/portfolio/DSC02141-Verbessert-NR-medium.webp 800w,
+                  assets/img/portfolio/DSC02141-Verbessert-NR-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <img src="assets/img/portfolio/DSC02141-Verbessert-NR-medium.webp" alt="Hochzeit - Romantische Zeremonie" loading="lazy">
+              </picture>
             </div>
             <div class="portfolio-overlay">
               <div class="portfolio-content">
                 <span class="portfolio-category">Hochzeit</span>
                 <h3>Romantische Zeremonie</h3>
                 <p>Unvergessliche Hochzeitsmomente</p>
-                <a href="assets/img/portfolio/DSC02141-Verbessert-NR.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Romantische Zeremonie" data-description="Unvergessliche Hochzeitsmomente">
+                <a href="assets/img/portfolio/DSC02141-Verbessert-NR-large.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Romantische Zeremonie" data-description="Unvergessliche Hochzeitsmomente">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
                     <path d="M10 14L21 3" stroke="currentColor" stroke-width="2"/>
@@ -287,14 +351,26 @@
           <!-- Event -->
           <div class="portfolio-item events" data-category="events">
             <div class="portfolio-image">
-              <img src="assets/img/portfolio/DSC02022.webp" alt="Event - Besondere Momente" loading="lazy">
+              <picture>
+                <source type="image/avif" srcset="
+                  assets/img/portfolio/DSC02022-small.avif 400w,
+                  assets/img/portfolio/DSC02022-medium.avif 800w,
+                  assets/img/portfolio/DSC02022-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <source type="image/webp" srcset="
+                  assets/img/portfolio/DSC02022-small.webp 400w,
+                  assets/img/portfolio/DSC02022-medium.webp 800w,
+                  assets/img/portfolio/DSC02022-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <img src="assets/img/portfolio/DSC02022-medium.webp" alt="Event - Besondere Momente" loading="lazy">
+              </picture>
             </div>
             <div class="portfolio-overlay">
               <div class="portfolio-content">
                 <span class="portfolio-category">Event</span>
                 <h3>Besondere Momente</h3>
                 <p>Emotionale Ereignisfotografie</p>
-                <a href="assets/img/portfolio/DSC02022.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Besondere Momente" data-description="Emotionale Ereignisfotografie">
+                <a href="assets/img/portfolio/DSC02022-large.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Besondere Momente" data-description="Emotionale Ereignisfotografie">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
                     <path d="M10 14L21 3" stroke="currentColor" stroke-width="2"/>
@@ -308,14 +384,26 @@
           <!-- Familie -->
           <div class="portfolio-item familie" data-category="familie">
             <div class="portfolio-image">
-              <img src="assets/img/portfolio/Baby-Shooting3.webp" alt="Familie - Zärtliche Babymomente" loading="lazy">
+              <picture>
+                <source type="image/avif" srcset="
+                  assets/img/portfolio/Baby-Shooting3-small.avif 400w,
+                  assets/img/portfolio/Baby-Shooting3-medium.avif 800w,
+                  assets/img/portfolio/Baby-Shooting3-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <source type="image/webp" srcset="
+                  assets/img/portfolio/Baby-Shooting3-small.webp 400w,
+                  assets/img/portfolio/Baby-Shooting3-medium.webp 800w,
+                  assets/img/portfolio/Baby-Shooting3-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <img src="assets/img/portfolio/Baby-Shooting3-medium.webp" alt="Familie - Zärtliche Babymomente" loading="lazy">
+              </picture>
             </div>
             <div class="portfolio-overlay">
               <div class="portfolio-content">
                 <span class="portfolio-category">Familie</span>
                 <h3>Zarte Momente</h3>
                 <p>Liebevolle Babyfotografie</p>
-                <a href="assets/img/portfolio/Baby-Shooting3.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Zarte Momente" data-description="Liebevolle Babyfotografie">
+                <a href="assets/img/portfolio/Baby-Shooting3-large.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Zarte Momente" data-description="Liebevolle Babyfotografie">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
                     <path d="M10 14L21 3" stroke="currentColor" stroke-width="2"/>
@@ -329,14 +417,26 @@
           <!-- Fine Art -->
           <div class="portfolio-item fineart" data-category="fineart">
             <div class="portfolio-image">
-              <img src="assets/img/portfolio/_A7_2.2.webp" alt="Fine Art - Künstlerische Vision" loading="lazy">
+              <picture>
+                <source type="image/avif" srcset="
+                  assets/img/portfolio/_A7_2.2-small.avif 400w,
+                  assets/img/portfolio/_A7_2.2-medium.avif 800w,
+                  assets/img/portfolio/_A7_2.2-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <source type="image/webp" srcset="
+                  assets/img/portfolio/_A7_2.2-small.webp 400w,
+                  assets/img/portfolio/_A7_2.2-medium.webp 800w,
+                  assets/img/portfolio/_A7_2.2-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <img src="assets/img/portfolio/_A7_2.2-medium.webp" alt="Fine Art - Künstlerische Vision" loading="lazy">
+              </picture>
             </div>
             <div class="portfolio-overlay">
               <div class="portfolio-content">
                 <span class="portfolio-category">Fine Art</span>
                 <h3>Künstlerische Vision</h3>
                 <p>Kreative Bildsprache</p>
-                <a href="assets/img/portfolio/_A7_2.2.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Künstlerische Vision" data-description="Kreative Bildsprache">
+                <a href="assets/img/portfolio/_A7_2.2-large.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Künstlerische Vision" data-description="Kreative Bildsprache">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
                     <path d="M10 14L21 3" stroke="currentColor" stroke-width="2"/>
@@ -350,14 +450,26 @@
           <!-- Dramatisches Portrait -->
           <div class="portfolio-item portrait" data-category="portrait">
             <div class="portfolio-image">
-              <img src="assets/img/portfolio/portrait-8.webp" alt="Portrait - Dramatische Ausstrahlung" loading="lazy">
+              <picture>
+                <source type="image/avif" srcset="
+                  assets/img/portfolio/portrait-8-small.avif 400w,
+                  assets/img/portfolio/portrait-8-medium.avif 800w,
+                  assets/img/portfolio/portrait-8-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <source type="image/webp" srcset="
+                  assets/img/portfolio/portrait-8-small.webp 400w,
+                  assets/img/portfolio/portrait-8-medium.webp 800w,
+                  assets/img/portfolio/portrait-8-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <img src="assets/img/portfolio/portrait-8-medium.webp" alt="Portrait - Dramatische Ausstrahlung" loading="lazy">
+              </picture>
             </div>
             <div class="portfolio-overlay">
               <div class="portfolio-content">
                 <span class="portfolio-category">Portrait</span>
                 <h3>Dramatisch</h3>
                 <p>Ausdrucksstarke Inszenierung</p>
-                <a href="assets/img/portfolio/portrait-8.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Dramatisch" data-description="Ausdrucksstarke Inszenierung">
+                <a href="assets/img/portfolio/portrait-8-large.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Dramatisch" data-description="Ausdrucksstarke Inszenierung">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
                     <path d="M10 14L21 3" stroke="currentColor" stroke-width="2"/>
@@ -371,14 +483,26 @@
           <!-- Hochzeit Emotion -->
           <div class="portfolio-item hochzeit" data-category="hochzeit">
             <div class="portfolio-image">
-              <img src="assets/img/portfolio/DSC_0665.webp" alt="Hochzeit - Emotionale Verbindung" loading="lazy">
+              <picture>
+                <source type="image/avif" srcset="
+                  assets/img/portfolio/DSC_0665-small.avif 400w,
+                  assets/img/portfolio/DSC_0665-medium.avif 800w,
+                  assets/img/portfolio/DSC_0665-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <source type="image/webp" srcset="
+                  assets/img/portfolio/DSC_0665-small.webp 400w,
+                  assets/img/portfolio/DSC_0665-medium.webp 800w,
+                  assets/img/portfolio/DSC_0665-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                <img src="assets/img/portfolio/DSC_0665-medium.webp" alt="Hochzeit - Emotionale Verbindung" loading="lazy">
+              </picture>
             </div>
             <div class="portfolio-overlay">
               <div class="portfolio-content">
                 <span class="portfolio-category">Hochzeit</span>
                 <h3>Emotionale Verbindung</h3>
                 <p>Liebe in perfektem Licht</p>
-                <a href="assets/img/portfolio/DSC_0665.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Emotionale Verbindung" data-description="Liebe in perfektem Licht">
+                <a href="assets/img/portfolio/DSC_0665-large.webp" class="portfolio-link lightbox-trigger" data-lightbox="portfolio" data-title="Emotionale Verbindung" data-description="Liebe in perfektem Licht">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 3h6v6" stroke="currentColor" stroke-width="2"/>
                     <path d="M10 14L21 3" stroke="currentColor" stroke-width="2"/>
@@ -509,7 +633,19 @@
         <div class="about-grid">
           <div class="about-image">
             <div class="about-image-container">
-              <img src="assets/img/author-mark.webp" alt="Mark Tietz - Professioneller Fotograf" class="about-portrait" loading="lazy">
+              <picture class="about-portrait">
+                <source type="image/avif" srcset="
+                  assets/img/author-mark-small.avif 400w,
+                  assets/img/author-mark-medium.avif 800w,
+                  assets/img/author-mark-large.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, 50vw">
+                <source type="image/webp" srcset="
+                  assets/img/author-mark-small.webp 400w,
+                  assets/img/author-mark-medium.webp 800w,
+                  assets/img/author-mark-large.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, 50vw">
+                <img src="assets/img/author-mark-medium.webp" alt="Mark Tietz - Professioneller Fotograf" class="about-portrait" loading="lazy">
+              </picture>
               <div class="about-badge">
                 <span class="badge-number">10+</span>
                 <span class="badge-text">Jahre<br>Erfahrung</span>
@@ -1072,6 +1208,7 @@
   <script src="js/portfolio.js"></script>
   <script src="js/testimonials.js"></script>
   <script src="js/performance.js"></script>
+  <script src="js/optimized-images.js"></script>
   <script src="js/enhanced-interactions.js"></script>
   
   <!-- AOS Animation Library -->

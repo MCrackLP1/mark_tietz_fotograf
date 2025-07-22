@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimierte Bilder - Beispiele</title>
+    <style>
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 2rem; 
+            line-height: 1.6;
+        }
+        .image-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+            margin: 2rem 0; 
+        }
+        .image-card { 
+            border: 1px solid #e5e5e5; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .image-card img { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .image-info { 
+            padding: 1rem; 
+        }
+        .image-info h3 { 
+            margin: 0 0 0.5rem 0; 
+            font-size: 1.1rem; 
+        }
+        .code-block { 
+            background: #f8f9fa; 
+            border: 1px solid #e9ecef; 
+            border-radius: 4px; 
+            padding: 1rem; 
+            margin: 1rem 0; 
+            overflow-x: auto; 
+            font-family: 'Courier New', monospace; 
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+        }
+        .hero-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <h1>🚀 Bildoptimierung erfolgreich!</h1>
+        <p>Deine Bilder sind jetzt für maximale Performance optimiert</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">43</div>
+            <div>Bildgruppen</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">612</div>
+            <div>Varianten</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div>Formate</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">95%</div>
+            <div>Geschwindigkeit</div>
+        </div>
+    </div>
+
+    <h2>📋 Beispiel-Code für deine Bilder</h2>
+    <p>Kopiere diese optimierten <code>&lt;picture&gt;</code> Tags in deine HTML-Dateien:</p>
+
+    <div class="image-grid">
+
+        <div class="image-card">
+            <picture class="responsive-image">
+  <source type="image/avif" srcset="assets\img\author-mark-medium.avif 800w, assets\img\author-mark-medium.avif 800w, assets\img\author-mark-large.avif 1200w, assets\img\author-mark-large.avif 1200w, assets\img\author-mark-small.avif 400w, assets\img\author-mark-small.avif 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <source type="image/webp" srcset="assets\img\author-mark-medium.webp 800w, assets\img\author-mark-medium.webp 800w, assets\img\author-mark-large.webp 1200w, assets\img\author-mark-large.webp 1200w, assets\img\author-mark.webp, assets\img\author-mark.webp, assets\img\author-mark-small.webp 400w, assets\img\author-mark-small.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <img src="assets\img\author-mark-small.avif" alt="author-mark - Optimiert für schnelles Laden" loading="lazy" class="responsive-image">
+</picture>
+            <div class="image-info">
+                <h3>author-mark</h3>
+                <p><strong>Varianten:</strong> 14</p>
+                <p><strong>Formate:</strong> webp, avif</p>
+                
+                <div class="code-block">&lt;picture class=&quot;responsive-image&quot;&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;assets\img\author-mark-medium.avif 800w, assets\img\author-mark-medium.avif 800w, assets\img\author-mark-large.avif 1200w, assets\img\author-mark-large.avif 1200w, assets\img\author-mark-small.avif 400w, assets\img\author-mark-small.avif 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;source type=&quot;image/webp&quot; srcset=&quot;assets\img\author-mark-medium.webp 800w, assets\img\author-mark-medium.webp 800w, assets\img\author-mark-large.webp 1200w, assets\img\author-mark-large.webp 1200w, assets\img\author-mark.webp, assets\img\author-mark.webp, assets\img\author-mark-small.webp 400w, assets\img\author-mark-small.webp 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;img src=&quot;assets\img\author-mark-small.avif&quot; alt=&quot;author-mark - Optimiert für schnelles Laden&quot; loading=&quot;lazy&quot; class=&quot;responsive-image&quot;&gt;
+&lt;/picture&gt;</div>
+            </div>
+        </div>
+        <div class="image-card">
+            <picture class="responsive-image">
+  <source type="image/avif" srcset="assets\img\favicon\favicon-32x32-medium.avif 800w, assets\img\favicon\favicon-32x32-medium.avif 800w, assets\img\favicon\favicon-32x32-large.avif 1200w, assets\img\favicon\favicon-32x32-large.avif 1200w, assets\img\favicon\favicon-32x32-small.avif 400w, assets\img\favicon\favicon-32x32-small.avif 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <source type="image/webp" srcset="assets\img\favicon\favicon-32x32-medium.webp 800w, assets\img\favicon\favicon-32x32-medium.webp 800w, assets\img\favicon\favicon-32x32-large.webp 1200w, assets\img\favicon\favicon-32x32-large.webp 1200w, assets\img\favicon\favicon-32x32.webp, assets\img\favicon\favicon-32x32.webp, assets\img\favicon\favicon-32x32-small.webp 400w, assets\img\favicon\favicon-32x32-small.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <img src="assets\img\favicon\favicon-32x32.png" alt="favicon-32x32 - Optimiert für schnelles Laden" loading="lazy" class="responsive-image">
+</picture>
+            <div class="image-info">
+                <h3>favicon-32x32</h3>
+                <p><strong>Varianten:</strong> 16</p>
+                <p><strong>Formate:</strong> webp, png, avif</p>
+                
+                <div class="code-block">&lt;picture class=&quot;responsive-image&quot;&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;assets\img\favicon\favicon-32x32-medium.avif 800w, assets\img\favicon\favicon-32x32-medium.avif 800w, assets\img\favicon\favicon-32x32-large.avif 1200w, assets\img\favicon\favicon-32x32-large.avif 1200w, assets\img\favicon\favicon-32x32-small.avif 400w, assets\img\favicon\favicon-32x32-small.avif 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;source type=&quot;image/webp&quot; srcset=&quot;assets\img\favicon\favicon-32x32-medium.webp 800w, assets\img\favicon\favicon-32x32-medium.webp 800w, assets\img\favicon\favicon-32x32-large.webp 1200w, assets\img\favicon\favicon-32x32-large.webp 1200w, assets\img\favicon\favicon-32x32.webp, assets\img\favicon\favicon-32x32.webp, assets\img\favicon\favicon-32x32-small.webp 400w, assets\img\favicon\favicon-32x32-small.webp 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;img src=&quot;assets\img\favicon\favicon-32x32.png&quot; alt=&quot;favicon-32x32 - Optimiert für schnelles Laden&quot; loading=&quot;lazy&quot; class=&quot;responsive-image&quot;&gt;
+&lt;/picture&gt;</div>
+            </div>
+        </div>
+        <div class="image-card">
+            <picture class="responsive-image">
+  <source type="image/avif" srcset="assets\img\favicon\favicon-16x16-medium.avif 800w, assets\img\favicon\favicon-16x16-medium.avif 800w, assets\img\favicon\favicon-16x16-large.avif 1200w, assets\img\favicon\favicon-16x16-large.avif 1200w, assets\img\favicon\favicon-16x16-small.avif 400w, assets\img\favicon\favicon-16x16-small.avif 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <source type="image/webp" srcset="assets\img\favicon\favicon-16x16-medium.webp 800w, assets\img\favicon\favicon-16x16-medium.webp 800w, assets\img\favicon\favicon-16x16-large.webp 1200w, assets\img\favicon\favicon-16x16-large.webp 1200w, assets\img\favicon\favicon-16x16.webp, assets\img\favicon\favicon-16x16.webp, assets\img\favicon\favicon-16x16-small.webp 400w, assets\img\favicon\favicon-16x16-small.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <img src="assets\img\favicon\favicon-16x16.png" alt="favicon-16x16 - Optimiert für schnelles Laden" loading="lazy" class="responsive-image">
+</picture>
+            <div class="image-info">
+                <h3>favicon-16x16</h3>
+                <p><strong>Varianten:</strong> 16</p>
+                <p><strong>Formate:</strong> webp, png, avif</p>
+                
+                <div class="code-block">&lt;picture class=&quot;responsive-image&quot;&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;assets\img\favicon\favicon-16x16-medium.avif 800w, assets\img\favicon\favicon-16x16-medium.avif 800w, assets\img\favicon\favicon-16x16-large.avif 1200w, assets\img\favicon\favicon-16x16-large.avif 1200w, assets\img\favicon\favicon-16x16-small.avif 400w, assets\img\favicon\favicon-16x16-small.avif 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;source type=&quot;image/webp&quot; srcset=&quot;assets\img\favicon\favicon-16x16-medium.webp 800w, assets\img\favicon\favicon-16x16-medium.webp 800w, assets\img\favicon\favicon-16x16-large.webp 1200w, assets\img\favicon\favicon-16x16-large.webp 1200w, assets\img\favicon\favicon-16x16.webp, assets\img\favicon\favicon-16x16.webp, assets\img\favicon\favicon-16x16-small.webp 400w, assets\img\favicon\favicon-16x16-small.webp 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;img src=&quot;assets\img\favicon\favicon-16x16.png&quot; alt=&quot;favicon-16x16 - Optimiert für schnelles Laden&quot; loading=&quot;lazy&quot; class=&quot;responsive-image&quot;&gt;
+&lt;/picture&gt;</div>
+            </div>
+        </div>
+        <div class="image-card">
+            <picture class="responsive-image">
+  <source type="image/avif" srcset="assets\img\favicon\apple-touch-icon-medium.avif 800w, assets\img\favicon\apple-touch-icon-medium.avif 800w, assets\img\favicon\apple-touch-icon-large.avif 1200w, assets\img\favicon\apple-touch-icon-large.avif 1200w, assets\img\favicon\apple-touch-icon-small.avif 400w, assets\img\favicon\apple-touch-icon-small.avif 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <source type="image/webp" srcset="assets\img\favicon\apple-touch-icon-medium.webp 800w, assets\img\favicon\apple-touch-icon-medium.webp 800w, assets\img\favicon\apple-touch-icon-large.webp 1200w, assets\img\favicon\apple-touch-icon-large.webp 1200w, assets\img\favicon\apple-touch-icon.webp, assets\img\favicon\apple-touch-icon.webp, assets\img\favicon\apple-touch-icon-small.webp 400w, assets\img\favicon\apple-touch-icon-small.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <img src="assets\img\favicon\apple-touch-icon.png" alt="apple-touch-icon - Optimiert für schnelles Laden" loading="lazy" class="responsive-image">
+</picture>
+            <div class="image-info">
+                <h3>apple-touch-icon</h3>
+                <p><strong>Varianten:</strong> 16</p>
+                <p><strong>Formate:</strong> webp, png, avif</p>
+                
+                <div class="code-block">&lt;picture class=&quot;responsive-image&quot;&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;assets\img\favicon\apple-touch-icon-medium.avif 800w, assets\img\favicon\apple-touch-icon-medium.avif 800w, assets\img\favicon\apple-touch-icon-large.avif 1200w, assets\img\favicon\apple-touch-icon-large.avif 1200w, assets\img\favicon\apple-touch-icon-small.avif 400w, assets\img\favicon\apple-touch-icon-small.avif 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;source type=&quot;image/webp&quot; srcset=&quot;assets\img\favicon\apple-touch-icon-medium.webp 800w, assets\img\favicon\apple-touch-icon-medium.webp 800w, assets\img\favicon\apple-touch-icon-large.webp 1200w, assets\img\favicon\apple-touch-icon-large.webp 1200w, assets\img\favicon\apple-touch-icon.webp, assets\img\favicon\apple-touch-icon.webp, assets\img\favicon\apple-touch-icon-small.webp 400w, assets\img\favicon\apple-touch-icon-small.webp 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;img src=&quot;assets\img\favicon\apple-touch-icon.png&quot; alt=&quot;apple-touch-icon - Optimiert für schnelles Laden&quot; loading=&quot;lazy&quot; class=&quot;responsive-image&quot;&gt;
+&lt;/picture&gt;</div>
+            </div>
+        </div>
+        <div class="image-card">
+            <picture class="responsive-image">
+  <source type="image/avif" srcset="assets\img\favicon\android-chrome-512x512-medium.avif 800w, assets\img\favicon\android-chrome-512x512-medium.avif 800w, assets\img\favicon\android-chrome-512x512-large.avif 1200w, assets\img\favicon\android-chrome-512x512-large.avif 1200w, assets\img\favicon\android-chrome-512x512-small.avif 400w, assets\img\favicon\android-chrome-512x512-small.avif 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <source type="image/webp" srcset="assets\img\favicon\android-chrome-512x512-medium.webp 800w, assets\img\favicon\android-chrome-512x512-medium.webp 800w, assets\img\favicon\android-chrome-512x512-large.webp 1200w, assets\img\favicon\android-chrome-512x512-large.webp 1200w, assets\img\favicon\android-chrome-512x512.webp, assets\img\favicon\android-chrome-512x512.webp, assets\img\favicon\android-chrome-512x512-small.webp 400w, assets\img\favicon\android-chrome-512x512-small.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <img src="assets\img\favicon\android-chrome-512x512.png" alt="android-chrome-512x512 - Optimiert für schnelles Laden" loading="lazy" class="responsive-image">
+</picture>
+            <div class="image-info">
+                <h3>android-chrome-512x512</h3>
+                <p><strong>Varianten:</strong> 16</p>
+                <p><strong>Formate:</strong> webp, png, avif</p>
+                
+                <div class="code-block">&lt;picture class=&quot;responsive-image&quot;&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;assets\img\favicon\android-chrome-512x512-medium.avif 800w, assets\img\favicon\android-chrome-512x512-medium.avif 800w, assets\img\favicon\android-chrome-512x512-large.avif 1200w, assets\img\favicon\android-chrome-512x512-large.avif 1200w, assets\img\favicon\android-chrome-512x512-small.avif 400w, assets\img\favicon\android-chrome-512x512-small.avif 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;source type=&quot;image/webp&quot; srcset=&quot;assets\img\favicon\android-chrome-512x512-medium.webp 800w, assets\img\favicon\android-chrome-512x512-medium.webp 800w, assets\img\favicon\android-chrome-512x512-large.webp 1200w, assets\img\favicon\android-chrome-512x512-large.webp 1200w, assets\img\favicon\android-chrome-512x512.webp, assets\img\favicon\android-chrome-512x512.webp, assets\img\favicon\android-chrome-512x512-small.webp 400w, assets\img\favicon\android-chrome-512x512-small.webp 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;img src=&quot;assets\img\favicon\android-chrome-512x512.png&quot; alt=&quot;android-chrome-512x512 - Optimiert für schnelles Laden&quot; loading=&quot;lazy&quot; class=&quot;responsive-image&quot;&gt;
+&lt;/picture&gt;</div>
+            </div>
+        </div>
+        <div class="image-card">
+            <picture class="responsive-image">
+  <source type="image/avif" srcset="assets\img\favicon\android-chrome-192x192-medium.avif 800w, assets\img\favicon\android-chrome-192x192-medium.avif 800w, assets\img\favicon\android-chrome-192x192-large.avif 1200w, assets\img\favicon\android-chrome-192x192-large.avif 1200w, assets\img\favicon\android-chrome-192x192-small.avif 400w, assets\img\favicon\android-chrome-192x192-small.avif 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <source type="image/webp" srcset="assets\img\favicon\android-chrome-192x192-medium.webp 800w, assets\img\favicon\android-chrome-192x192-medium.webp 800w, assets\img\favicon\android-chrome-192x192-large.webp 1200w, assets\img\favicon\android-chrome-192x192-large.webp 1200w, assets\img\favicon\android-chrome-192x192.webp, assets\img\favicon\android-chrome-192x192.webp, assets\img\favicon\android-chrome-192x192-small.webp 400w, assets\img\favicon\android-chrome-192x192-small.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
+  <img src="assets\img\favicon\android-chrome-192x192.png" alt="android-chrome-192x192 - Optimiert für schnelles Laden" loading="lazy" class="responsive-image">
+</picture>
+            <div class="image-info">
+                <h3>android-chrome-192x192</h3>
+                <p><strong>Varianten:</strong> 16</p>
+                <p><strong>Formate:</strong> webp, png, avif</p>
+                
+                <div class="code-block">&lt;picture class=&quot;responsive-image&quot;&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;assets\img\favicon\android-chrome-192x192-medium.avif 800w, assets\img\favicon\android-chrome-192x192-medium.avif 800w, assets\img\favicon\android-chrome-192x192-large.avif 1200w, assets\img\favicon\android-chrome-192x192-large.avif 1200w, assets\img\favicon\android-chrome-192x192-small.avif 400w, assets\img\favicon\android-chrome-192x192-small.avif 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;source type=&quot;image/webp&quot; srcset=&quot;assets\img\favicon\android-chrome-192x192-medium.webp 800w, assets\img\favicon\android-chrome-192x192-medium.webp 800w, assets\img\favicon\android-chrome-192x192-large.webp 1200w, assets\img\favicon\android-chrome-192x192-large.webp 1200w, assets\img\favicon\android-chrome-192x192.webp, assets\img\favicon\android-chrome-192x192.webp, assets\img\favicon\android-chrome-192x192-small.webp 400w, assets\img\favicon\android-chrome-192x192-small.webp 400w&quot; sizes=&quot;(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw&quot;&gt;
+  &lt;img src=&quot;assets\img\favicon\android-chrome-192x192.png&quot; alt=&quot;android-chrome-192x192 - Optimiert für schnelles Laden&quot; loading=&quot;lazy&quot; class=&quot;responsive-image&quot;&gt;
+&lt;/picture&gt;</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>⚡ Performance-Tipps</h2>
+    <ul>
+        <li><strong>Lazy Loading:</strong> Alle Bilder haben <code>loading="lazy"</code></li>
+        <li><strong>Moderne Formate:</strong> AVIF und WebP für 50-80% kleinere Dateien</li>
+        <li><strong>Responsive:</strong> Verschiedene Größen je nach Bildschirmgröße</li>
+        <li><strong>Fallback:</strong> JPEG/PNG für ältere Browser</li>
+    </ul>
+
+    <h2>🔧 CSS für responsive Bilder</h2>
+    <div class="code-block">/* Basis-Styles für optimierte Bilder */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Hero Bilder */
+.hero-image {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Lazy loading Animation */
+.responsive-image[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.responsive-image[loading="lazy"].loaded {
+    opacity: 1;
+}</div>
+
+    <h2>📱 JavaScript für erweiterte Features</h2>
+    <div class="code-block">// Intersection Observer für Lazy Loading
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.classList.add('loaded');
+            observer.unobserve(img);
+        }
+    });
+});
+
+// Beobachte alle lazy images
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    imageObserver.observe(img);
+});
+
+// Preload kritische Bilder
+const preloadImage = (src) => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = src;
+    document.head.appendChild(link);
+};
+
+// Hero-Bild preloaden
+preloadImage('assets/img/portfolio/photographer-hero-desktop.webp');</div>
+
+    <script>
+        // Aktiviere die CSS Animation für geladene Bilder
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+        });
+    </script>
+</body>
+</html>
