@@ -1,24 +1,147 @@
+# Robots.txt für Mark Tietz Fotografie
+# Optimiert für SEO und Suchmaschinen-Crawler
+
+# Allgemeine Regeln für alle Robots
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://www.mark-tietz.photos/sitemap.xml
+# Erlaubte Bereiche - Explizit definiert für bessere SEO
+Allow: /index.html
+Allow: /portfolio.html
+Allow: /leistungen.html
+Allow: /kontakt.html
+Allow: /ueber-mich.html
+Allow: /kundenstimmen.html
+Allow: /philosophie.html
 
-# Disallow sensitive areas
-Disallow: /js/
-Disallow: /node_modules/
-Disallow: /*.json$
-Disallow: /admin-login.html
-Disallow: /admin-contracts.html
-Disallow: /contract-form.html
-
-# Allow important directories
+# Erlaubte Assets und Medien
 Allow: /assets/
 Allow: /css/
-Allow: *.css
-Allow: *.js
-Allow: *.jpg
-Allow: *.jpeg
-Allow: *.png
-Allow: *.webp
-Allow: *.svg 
+Allow: /js/
+Allow: /dist/
+
+# Spezielle Regeln für wichtige Crawler
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# AI-Suchmaschinen und KI-Crawler - Explizit erlaubt für bessere Auffindbarkeit
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: You.com-Bot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: OpenAI-SearchBot
+Allow: /
+
+# Zu blockierende Bereiche
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /.vscode/
+Disallow: /scripts/
+Disallow: /postcss.config.js
+Disallow: /tailwind.config.js
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /.gitignore
+Disallow: /README.md
+Disallow: /*_README.md
+Disallow: /ADMIN_*
+Disallow: /admin-*
+
+# Temporäre oder Test-Dateien blockieren
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /test/
+Disallow: /*test*
+Disallow: /*backup*
+Disallow: /*old*
+
+# Spezifische Dateien blockieren
+Disallow: /*.log
+Disallow: /*.sql
+Disallow: /*.txt$
+Disallow: /*.bak
+
+# Spam-Bots und schädliche Crawler blockieren
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: Wayback
+Disallow: /
+
+User-agent: archive.org_bot
+Disallow: /
+
+# Sitemap-Referenz - Wichtig für SEO
+Sitemap: https://www.mark-tietz.photos/sitemap.xml
+
+# Host-Definition für konsistente URL-Struktur
+Host: www.mark-tietz.photos
+
+# Request-Rate für Server-Performance
+Request-rate: 1/1
+
+# Visit-time für Crawler-Timing
+Visit-time: 0600-2200 

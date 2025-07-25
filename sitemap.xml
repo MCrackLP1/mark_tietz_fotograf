@@ -1,63 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Hauptseite - Höchste Priorität -->
   <url>
     <loc>https://www.mark-tietz.photos/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/hero-image.webp</image:loc>
+      <image:caption>Mark Tietz Fotografie - Professioneller Fotograf Kempten Allgäu</image:caption>
+      <image:title>Mark Tietz Fotografie Hauptbild</image:title>
+    </image:image>
   </url>
+  
+  <!-- Portfolio - Sehr wichtig für SEO -->
   <url>
     <loc>https://www.mark-tietz.photos/portfolio.html</loc>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/portfolio/portfolio-hero.webp</image:loc>
+      <image:caption>Portfolio Mark Tietz Fotografie - Hochzeits-, Business- und Familienfotografie</image:caption>
+      <image:title>Mark Tietz Fotografie Portfolio</image:title>
+    </image:image>
   </url>
+  
+  <!-- Leistungen - Wichtig für Service-Suchen -->
   <url>
     <loc>https://www.mark-tietz.photos/leistungen.html</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.mark-tietz.photos/philosophie.html</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.mark-tietz.photos/ueber-mich.html</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.mark-tietz.photos/kundenstimmen.html</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.mark-tietz.photos/kontakt.html</loc>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/services-hero.webp</image:loc>
+      <image:caption>Leistungen Mark Tietz Fotografie - Preise und Services</image:caption>
+      <image:title>Mark Tietz Fotografie Leistungen</image:title>
+    </image:image>
   </url>
+  
+  <!-- Kontakt - Wichtig für lokale Suchen -->
+  <url>
+    <loc>https://www.mark-tietz.photos/kontakt.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/contact-hero.webp</image:loc>
+      <image:caption>Kontakt Mark Tietz Fotografie Kempten Allgäu</image:caption>
+      <image:title>Mark Tietz Fotografie Kontakt</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Über mich - Wichtig für Personal Branding -->
+  <url>
+    <loc>https://www.mark-tietz.photos/ueber-mich.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/author-mark-large.webp</image:loc>
+      <image:caption>Über Mark Tietz - Professioneller Fotograf aus Kempten</image:caption>
+      <image:title>Mark Tietz Fotograf Portrait</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Kundenstimmen - Wichtig für Vertrauen und Reviews -->
+  <url>
+    <loc>https://www.mark-tietz.photos/kundenstimmen.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/testimonials-hero.webp</image:loc>
+      <image:caption>Kundenstimmen Mark Tietz Fotografie - 4.9 Sterne Google Bewertung</image:caption>
+      <image:title>Mark Tietz Fotografie Kundenstimmen</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Philosophie - Wichtig für Unique Content -->
+  <url>
+    <loc>https://www.mark-tietz.photos/philosophie.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/philosophy-hero.webp</image:loc>
+      <image:caption>Fotografie-Philosophie Mark Tietz - Authentische Momente</image:caption>
+      <image:title>Mark Tietz Fotografie Philosophie</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Rechtliche Seiten - Notwendig für Compliance -->
   <url>
     <loc>https://www.mark-tietz.photos/impressum.html</loc>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  
   <url>
     <loc>https://www.mark-tietz.photos/datenschutz.html</loc>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  
   <url>
     <loc>https://www.mark-tietz.photos/agb.html</loc>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2024-12-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  
+  <!-- Portfolio Kategorie Seiten (falls vorhanden) -->
+  <url>
+    <loc>https://www.mark-tietz.photos/hochzeitsfotografie.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/portfolio/wedding-gallery.webp</image:loc>
+      <image:caption>Hochzeitsfotografie Mark Tietz Kempten Allgäu</image:caption>
+      <image:title>Mark Tietz Hochzeitsfotografie Portfolio</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://www.mark-tietz.photos/businessfotografie.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/portfolio/business-gallery.webp</image:loc>
+      <image:caption>Businessfotografie Mark Tietz Kempten Allgäu</image:caption>
+      <image:title>Mark Tietz Businessfotografie Portfolio</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://www.mark-tietz.photos/familienfotografie.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/portfolio/family-gallery.webp</image:loc>
+      <image:caption>Familienfotografie Mark Tietz Kempten Allgäu</image:caption>
+      <image:title>Mark Tietz Familienfotografie Portfolio</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://www.mark-tietz.photos/eventfotografie.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.mark-tietz.photos/assets/img/portfolio/event-gallery.webp</image:loc>
+      <image:caption>Eventfotografie Mark Tietz Kempten Allgäu</image:caption>
+      <image:title>Mark Tietz Eventfotografie Portfolio</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Blog/News Seiten (falls vorhanden) -->
+  <url>
+    <loc>https://www.mark-tietz.photos/blog.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.mark-tietz.photos/fotografie-tipps.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- FAQ Seite -->
+  <url>
+    <loc>https://www.mark-tietz.photos/faq.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Preise Seite (falls separate) -->
+  <url>
+    <loc>https://www.mark-tietz.photos/preise.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Referenzen Seite -->
+  <url>
+    <loc>https://www.mark-tietz.photos/referenzen.html</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset> 
